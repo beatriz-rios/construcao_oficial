@@ -6,20 +6,24 @@
     outline: 0;
 }
 
-/*ESTILIZANDO A NAVBAR*/
+/* ESTILIZANDO A NAVBAR */
 ul {
     list-style-type: none;
-    padding: 20px 0;
-    /* Ajuste o padding para 20px em cima/baixo e 0 nas laterais */
+    padding: 20px 0; 
     margin: 10px;
     overflow: hidden;
     background-color: #6C7A89;
     border-radius: 10px;
-
-    /* deixando centralizado */
+    
+    /* --- ALTERADO AQUI --- */
+    width: 98%; /* Aumentado para 98% para alongar a barra quase completamente */
+    /* max-width: 1200px; Removido para que não haja limite em telas grandes */
+    margin-top: 15px; 
+    
+    /* Adicionando Flexbox para distribuir os itens */
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-around; /* Distribui os itens uniformemente */
+    align-items: center; 
 }
 
 /*ESTILIZANDO BOTAO NAVBAR MENU*/
@@ -64,7 +68,8 @@ ul li {
 }
 
 
-/*DEFININDO TRANSICAO DE CORES NAVBAR,ALINHANDO,DEFININDO TAMANHO DE FONTE*/
+
+/* DEFININDO TRANSICAO DE CORES NAVBAR,ALINHANDO,DEFININDO TAMANHO DE FONTE */
 ul li a {
     display: block;
     color: white;
@@ -72,13 +77,17 @@ ul li a {
     text-align: center;
     padding: 10px 20px;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 25px;
     transition: background-color 0.5s ease;
-    border-radius: 5px;
-    padding: 10px 40px;
-    width: 100%;
-    box-sizing: border-box;
+    border-radius: 5px;          
+    
+    /* Mantido o padding de 10px 40px para botões grandes */
+    padding: 10px 40px; 
+    width: 100%; 
+    box-sizing: border-box; 
 }
+
+
 
 /* ESTILIZANDO OS INPUTS DE TEXTO E DATA (exceto o botão) */
 .loginn input[type="text"],
@@ -140,7 +149,7 @@ ul li a {
 
     /*Imagem tamanho, posicao*/
     overflow: hidden;
-    background-image: url('../imagens/cidade.jpg');
+    background-image: url('../imagens/cidade.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
