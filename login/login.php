@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 href="http://localhost/aulaPHP/construcao/cadastroP/cadastroP.php">Cadastro de
                 Produto</a></li>
         <li class="cadastroo"><a
-                href="http://localhost/aulaPHP/construcao/cadastroM/cadastroM.php">Cadastro
+                href="http://localhost/construcao_oficial/cadastroM/cadstroM.php">Cadastro
                 de movimento</a></li>
         <li class="estoque"><a href="http://localhost/aulaPHP/construcao/cadastroP/tabelaProdutos.php">Estoque</a></li>
           <li class="login">

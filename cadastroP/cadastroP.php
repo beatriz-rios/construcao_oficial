@@ -15,7 +15,7 @@
         <li class="menu"><a href="http://localhost/aulaPHP/construcao/menu/menu.php">Menu</a></li>
         <li class="login"><a href="http://localhost/aulaPHP/construcao/login/login.php">Login</a></li>
         <li class="cadastroo"><a href="http://localhost/aulaPHP/construcao/cadastroP/cadastroP.php">Cadastro de produtos</a></li>
-        <li class="movimentacao"><a href="http://localhost/aulaPHP/construcao/cadastroM/cadastroM.php">Cadastro movimentação</a></li>
+        <li class="movimentacao"><a href="http://localhost/construcao_oficial/cadastroM/cadstroM.php">Cadastro movimentação</a></li>
         <li class="estoque"><a href="http://localhost/aulaPHP/construcao/cadastroP/tabelaProdutos.php">Estoque</a></li>
     </ul>
     <img src="/icon.png" id="icone-usuario">
