@@ -18,7 +18,7 @@
         <li class="movimentacao"><a href="http://localhost/construcao_oficial/cadastroM/cadstroM.php">Cadastro movimentação</a></li>
         <li class="estoque"><a href="http://localhost/aulaPHP/construcao/cadastroP/tabelaProdutos.php">Estoque</a></li>
     </ul>
-    <img src="/icon.png" id="icone-usuario">
+    <img src="../imagens/people.png" id="icone-usuario">
 
     <!--Informaçoes do cadastro cliente-->
     <div id="info-usuario"

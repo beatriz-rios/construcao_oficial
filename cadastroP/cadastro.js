@@ -1,3 +1,45 @@
+/**
+ * Verifica se o usuário está logado (checa o localStorage).
+ * Se não estiver logado, redireciona para a página de login.
+ */
+function verificarLogin() {
+    const usuarioLogadoJson = localStorage.getItem('usuarioLogado');
+    const loginPageUrl = '../login/login.php'; // Ajuste o caminho se necessário!
+
+    // Se a chave 'usuarioLogado' não existir no localStorage, o usuário não está logado.
+    if (!usuarioLogadoJson) {
+        // Redireciona e encerra a execução do script.
+        window.location.href = loginPageUrl; 
+        return false;
+    }
+    
+    // Tenta fazer o parse do JSON para garantir que é um objeto válido.
+    try {
+        const usuarioLogado = JSON.parse(usuarioLogadoJson);
+
+        // Opcional: Uma checagem adicional para garantir que o objeto não é null e contém dados essenciais.
+        if (!usuarioLogado || !usuarioLogado.nome || !usuarioLogado.email) {
+            // Se os dados estiverem incompletos, remove a chave e redireciona.
+            localStorage.removeItem('usuarioLogado');
+            window.location.href = loginPageUrl; 
+            return false;
+        }
+
+    } catch (e) {
+        // Se houver um erro no parse (JSON inválido), redireciona.
+        localStorage.removeItem('usuarioLogado');
+        window.location.href = loginPageUrl; 
+        return false;
+    }
+
+    // Se chegou até aqui, o usuário está logado e o script continua a execução normal.
+    return true;
+}
+
+// Chama a função imediatamente para proteger a página
+verificarLogin();
+
+
 //ESTILIZACAO DO PERFIL DO USUARIO (Revisado para buscar do localStorage)
 document.addEventListener('DOMContentLoaded', (event) => {
     // 1. Elementos do DOM
