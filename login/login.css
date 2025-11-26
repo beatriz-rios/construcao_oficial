@@ -1,0 +1,269 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    outline: 0;
+}
+
+/*ESTILIZANDO A NAVBAR*/
+ul {
+    list-style-type: none;
+    padding: 20px 0;
+    /* Ajuste o padding para 20px em cima/baixo e 0 nas laterais */
+    margin: 10px;
+    overflow: hidden;
+    background-color: #6C7A89;
+    border-radius: 10px;
+
+    /* deixando centralizado */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/*ESTILIZANDO BOTAO NAVBAR MENU*/
+.menu a:hover {
+    background-color: #D9D9D9;
+    color: black;
+    border-radius: 5px;
+}
+
+/*ESTILIZANDO BOTAO NAVBAR login*/
+.login a:hover {
+    background-color: #A52A2A;
+    color: black;
+    border-radius: 5px;
+}
+
+/*ESTILIZANDO BOTAO NAVBAR CADASTRO*/
+.cadastroo a:hover {
+    background-color: #FFB81C;
+    color: black;
+    border-radius: 5px;
+}
+
+/*ESTILIZANDO BOTAO NAVBAR ESTOQUE*/
+.estoque a:hover {
+    background-color: #003366;
+    color: white;
+    border-radius: 5px;
+}
+
+.movimentacao a:hover {
+    background-color: #A52A2A;
+    color: black;
+    border: 5px;
+}
+
+ul li {
+    /*separando os botoes da navbar*/
+    display: inline-block;
+    margin: 0;
+
+}
+
+
+/*DEFININDO TRANSICAO DE CORES NAVBAR,ALINHANDO,DEFININDO TAMANHO DE FONTE*/
+ul li a {
+    display: block;
+    color: white;
+    background-color: black;
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 22px;
+    transition: background-color 0.5s ease;
+    border-radius: 5px;
+    padding: 10px 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ESTILIZANDO OS INPUTS DE TEXTO E DATA (exceto o botão) */
+.loginn input[type="text"],
+.loginn input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 2px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
+    /* Garante que o input fique em sua própria linha */
+    background-color: white;
+    /* Cor de fundo branca dos inputs */
+}
+
+/* Estilização para o novo botão de login */
+#btn-login {
+    width: 100%;
+    padding: 15px;
+    margin-top: 25px;
+    background-color: #007bff;
+    /* Azul vibrante */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#btn-login:hover {
+    background-color: #A52A2A;
+    /* Um pouco mais escuro ao passar o mouse */
+}
+
+
+/* DIV QUADRADO GRANDE (CONTAINER PRINCIPAL) */
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 80vh;
+    margin-top: 4.8%;
+
+}
+
+
+
+/* NOVO: Container para aplicar o fundo da cidade */
+.form-container {
+    /* Defina o tamanho do container de fundo */
+    width: 8000px;
+    height: 690px;
+    padding: 2%;
+
+    /*Imagem tamanho, posicao*/
+    overflow: hidden;
+    background-image: url('../imagens/cidade.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* Necessário para posicionamento do .loginn se precisar de ajustes */
+    margin-top: -1%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+
+/* DIV ONDE ESTÃO OS CAMPOS DO FORMULÁRIO */
+.loginn {
+    background-color: rgba(165, 43, 43, 0.6);
+    padding: 80px;
+    border-radius: 7px;
+    width: 70%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: white;
+    margin: auto;
+    /* centralizar o card sobre a imagem */
+    margin-top: 15px;
+}
+
+#nome-input {
+    width: 104.5%;
+    padding: 10px;
+    margin-top: 2px;
+    margin-bottom: 20px;
+    border: none;
+    /* Removi a borda para ficar mais limpo */
+    border-radius: 10px;
+    /* **Arredonda mais as bordas dos inputs** */
+
+    background-color: white;
+    color: black;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* ESTILIZANDO OS INPUTS DE TEXTO E SENHA */
+/* Mudei o seletor para incluir 'password' e remover 'date' que não está no HTML */
+.loginn input[type="email"],
+.loginn input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 2px;
+    margin-bottom: 20px;
+    border: none;
+    /* Removi a borda para ficar mais limpo */
+    border-radius: 10px;
+    /* **Arredonda mais as bordas dos inputs** */
+
+    background-color: white;
+    color: black;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#nome-input:focus {
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.445);
+    scale: 1.2;
+    cursor: text;
+}
+
+.loginn input:focus {
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.445);
+    scale: 1.2;
+    cursor: text;
+}
+
+/* Estiliza os labels (Nome, E-mail, Senha) para ficarem em sua própria linha e com espaço */
+.loginn label {
+
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+/*Estilizando as informações do USUARIO*/
+/* Seu código existente (se houver) */
+.loga {
+    background-color: black;
+}
+
+
+/*estilizando o painel de informacoes*/
+.info-painel {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 90px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 100;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+#info-usuario {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 90px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 100;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#icone-usuario {
+    cursor: pointer;
+}

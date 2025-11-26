@@ -1,0 +1,131 @@
+body{
+/* Imagem tamanho, posicao */
+ background-image: url('../imagens/tijolo.png'); 
+ background-size: cover; 
+ background-position: center; 
+ background-repeat: no-repeat;
+ overflow-x: hidden; /* MANTIDO: Evita a barra de rolagem horizontal indesejada */
+/* overflow: hidden; *//* Alternativa se quiser remover AMBAS as barras de rolagem */
+min-height: 100vh; /* Faz com que o body tenha pelo menos a altura da tela */
+ margin: 0; /* Remove a margem padrão do body */
+display: flex;
+flex-direction: column; /* Empilha o conteúdo (navbar, cinza) */
+ align-items: center; /* Centraliza o conteúdo horizontalmente */
+ border-radius: 5px; 
+
+}
+/* ... restante do seu código CSS ... */
+
+/* ESTILIZANDO A NAVBAR */
+ul {
+    list-style-type: none;
+    padding: 20px 0; 
+    margin: 10px;
+    overflow: hidden;
+    background-color: #6C7A89;
+    border-radius: 10px;
+    
+    /* --- ALTERADO AQUI --- */
+    width: 98%; /* Aumentado para 98% para alongar a barra quase completamente */
+    /* max-width: 1200px; Removido para que não haja limite em telas grandes */
+    margin-top: 15px; 
+    
+    /* Adicionando Flexbox para distribuir os itens */
+    display: flex;
+    justify-content: space-around; /* Distribui os itens uniformemente */
+    align-items: center; 
+}
+
+
+/* ESTILIZANDO BOTAO NAVBAR login */
+.login a:hover{
+    background-color: #FFB81C;
+    color: black;
+    border-radius: 5px;
+}
+
+/* ESTILIZANDO BOTAO NAVBAR CADASTRO */
+.cadastroo a:hover{ 
+    background-color: #A52A2A;
+    color: black;
+    border-radius: 5px;
+}
+/* ESTILIZANDO BOTAO NAVBAR ESTOQUE */
+.estoque a:hover{
+    background-color: #003366;
+    color: white;
+    border-radius: 5px;
+}
+.movimentacao a:hover{
+    background-color:  #A52A2A;
+    color: black;
+    border: 5px;
+}
+
+ul li {
+    /* Mantém o display para que os <a> ocupem o espaço corretamente */
+    display: inline-block; 
+    margin: 0; /* Remove as margens fixas */
+}
+
+
+
+
+/* DEFININDO TRANSICAO DE CORES NAVBAR,ALINHANDO,DEFININDO TAMANHO DE FONTE */
+ul li a {
+    display: block;
+    color: white;
+    background-color: black;
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 25px;
+    transition: background-color 0.5s ease;
+    border-radius: 5px;          
+    
+    /* Mantido o padding de 10px 40px para botões grandes */
+    padding: 10px 40px; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+
+
+/* ESTILIZANDO CARD CINZA ESCURO */
+.cinza{
+    background-color: #A5ABB0;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: 80%; /* largura */
+    min-height: 75vh; 
+    margin: 4.8% auto; /* Ajuste o margin para centralizar e dar espaço */
+    border-radius: 5px; /*borda*/
+}
+
+/* CARD CINZA CLARO */
+.cinzz{
+    background-color: #D9D9D9;
+    display: flex;/*DEIXA PARADO*/
+    flex-direction: column; /* Adicionado para empilhar o texto e a imagem */
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Adicionado para centralizar o texto dentro de cinzz */
+    width: 75%;
+    min-height: 50vh; 
+    margin: 2.4% auto; /*tamanho para cima/baixo*/
+    border-radius: 5px;
+}
+
+/* FONTE TEXTO */
+.font{
+  font-size: 39px;
+  text-align: center; /*texto no centro*/
+  margin-bottom: 2%; /* Reduzido o margin-bottom de 16% para 2% */
+}
+
+/*IMAGEM*/
+.img{
+   width: 35%; /*tamanho da imagem*/
+   margin-top: 10px; /* Ajustado para dar um pequeno espaço da imagem ao texto */
+}
