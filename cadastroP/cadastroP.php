@@ -14,12 +14,20 @@
     <ul>
         <li class="menu"><a href="http://localhost/aulaPHP/construcao/menu/menu.php">Menu</a></li>
         <li class="login"><a href="http://localhost/aulaPHP/construcao/login/login.php">Login</a></li>
-        <li class="cadastroo"><a href="http://localhost/aulaPHP/construcao/cadastroP/cadastroP.php">Cadastro de produtos</a></li>
-        <li class="movimentacao"><a href="http://localhost/construcao_oficial/cadastroM/cadstroM.php">Cadastro movimentação</a></li>
-        <li class="estoque"><a href="http://localhost/aulaPHP/construcao/cadastroP/tabelaProdutos.php">Estoque</a></li>
+        <li class="cadastroo"><a
+                href="http://localhost/construcao_oficial/cadastroP/cadastroP.php">Cadastro de
+                Produto</a></li>
+        <li class="cadastroo"><a
+                href="http://localhost/construcao_oficial/cadastroM/cadstroM.php">Cadastro
+                de movimento</a></li>
+        <li class="estoque"><a href="http://localhost/construcao_oficial/tabelas/tabelasProdutos.php">Estoque</a></li>
+          <li class="login">
+            <a href="#" id="btn-logout">Sair (Logout)</a>
+        </li>
+        <li class="login"><img src="../imagens/people.png" id="icone-usuario"></li> 
     </ul>
-    <img src="../imagens/people.png" id="icone-usuario">
 
+    
     <!--Informaçoes do cadastro cliente-->
     <div id="info-usuario"
         style="display:none; position: absolute; right: 20px; top: 90px; background-color: #fcd378; border: 1px solid #ccc; padding: 15px; z-index: 100; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">

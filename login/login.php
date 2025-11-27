@@ -65,12 +65,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <li class="menu"><a href="http://localhost/aulaPHP/construcao/menu/menu.php">Menu</a></li>
         <li class="login"><a href="http://localhost/aulaPHP/construcao/login/login.php">Login</a></li>
         <li class="cadastroo"><a
-                href="http://localhost/aulaPHP/construcao/cadastroP/cadastroP.php">Cadastro de
+                href="http://localhost/construcao_oficial/cadastroP/cadastroP.php">Cadastro de
                 Produto</a></li>
         <li class="cadastroo"><a
                 href="http://localhost/construcao_oficial/cadastroM/cadstroM.php">Cadastro
                 de movimento</a></li>
-        <li class="estoque"><a href="http://localhost/aulaPHP/construcao/cadastroP/tabelaProdutos.php">Estoque</a></li>
+        <li class="estoque"><a href="http://localhost/construcao_oficial/tabelas/tabelasProdutos.php">Estoque</a></li>
           <li class="login">
             <a href="#" id="btn-logout">Sair (Logout)</a>
         </li>

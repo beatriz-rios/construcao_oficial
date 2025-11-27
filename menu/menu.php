@@ -11,9 +11,7 @@
      <!--NAVBAR-->
      <ul>
     <li class="login"><a href="http://localhost/construcao_oficial/login/login.php">Login</a></li>
-    <li class="cadastroo"><a href="http://localhost/construcao_oficial/login/login.php">Cadastro de produtos</a></li>
-    <li class="movimentacao"><a href="http://localhost/construcao_oficial/login/login.php">Cadastro movimentação</a></li>
-    <li class="estoque"><a href="http://localhost/construcao_oficial/login/login.php">Estoque</a></li>
+ 
     </ul>
     
     <div class="cinza"><!--CARD CINZA ESCURO-->
