@@ -41,8 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Funcionário</title>
-    <link rel="stylesheet" href="login.css">
-
+    <link rel="stylesheet" href="../_css/header.css">
+    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="../_css/main.css">
 </head>
 
 <body>
@@ -58,46 +59,52 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         top: 0;
         left: 0;
         z-index: 9999;
+        background-color: #ddb327ff;
     ">
     </div>
 
-    <ul>
-        <li class="menu"><a href="http://localhost/construcao_oficial/menu/menu.html">Menu</a></li>
-        <li class="login"><a href="http://localhost/construcao_oficial/login/login.php">Login</a></li>
-        <li class="cadastroo"><a
-                href="http://localhost/construcao_oficial/cadastroP/cadastroP.php">Cadastro de
-                Produto</a></li>
-        <li class="cadastroo"><a
-                href="http://localhost/construcao_oficial/cadastroM/cadstroM.php">Cadastro
-                de movimento</a></li>
-        <li class="estoque"><a href="http://localhost/construcao_oficial/tabelas/tabelasProdutos.php">Estoque</a></li>
-          <li class="login">
-            <a href="#" id="btn-logout">Sair (Logout)</a>
-        </li>
-        <li class="login"><img src="../imagens/people.png" id="icone-usuario"></li>
-      
-    </ul>
+    <div class="header-container">
+        <ul>
+            <li class="menu"><a href="http://localhost/construcao_oficial/menu/menu.html">Menu</a></li>
+            <li class="login"><a href="http://localhost/construcao_oficial/login/login.php">Login</a></li>
+            <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroP/cadastroP.php"
+                    class="texto-grande">Cadastro de
+                    Prod.</a></li>
+            <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroM/cadstroM.php"
+                    class="texto-grande">Cadastro
+                    de Mov.</a></li>
+            <li class="estoque"><a href="http://localhost/construcao_oficial/tabelas/tabelasProdutos.php">Estoque</a>
+            </li>
+            <li class="login">
+                <a href="#" id="btn-logout">Sair (Logout)</a>
+            </li>
+            <li class="login"><img src="../imagens/people.png" id="icone-usuario"></li>
 
-    <div class="cards">
-        <div class="form-container">
-            <form id="formulario-login">
-                <div class="loginn">
-                    <label for="nome-input">Nome:</label>
-                    <input type="text" name="nome" id="nome-input"> 
-
-                    <label for="email-input">E-mail:</label>
-                    <input type="email" name="e-mail" id="email-input"><br>
-
-                    <label for="senha-input">Senha:</label>
-                    <input type="password" name="senha" id="senha-input" required>
-
-                    <button type="submit" id="btn-login">ENTRAR</button>
-                </div>
-            </form>
-        </div>
+            <li><img src="../imagens/logo.png" alt="logo" class="logo"></li>
+        </ul>
     </div>
 
-    <div id="info-usuario" class="info-painel">
+    <div class="cards">
+        <form id="formulario-login">
+            <div class="loginn">
+                <label for="nome-input">Nome:</label>
+                <input type="text" name="nome" id="nome-input">
+
+                <label for="email-input">E-mail:</label>
+                <input type="email" name="e-mail" id="email-input"><br>
+
+                <label for="senha-input">Senha:</label>
+                <input type="password" name="senha" id="senha-input" required>
+
+                <button type="submit" id="btn-login">ENTRAR</button>
+            </div>
+        </form>
+
+    </div>
+
+    <div id="info-usuario"
+        style="display:none; position: absolute; right: 20px; top: 90px; background-color: #fcd378; border: 1px solid #ccc; padding: 15px; z-index: 100; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+        <h4 style="margin-top: 0;">Usuário Logado</h4>
         <p>Nome: <span id="display-nome"></span></p>
         <p>E-mail: <span id="display-email"></span></p>
     </div>

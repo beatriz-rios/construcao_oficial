@@ -12,39 +12,51 @@ if (!$conn) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movimentação</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./cadastrom.css">
+    <link rel="stylesheet" href="../_css/header.css">
+    <link rel="stylesheet" href="../_css/main.css">
 </head>
+
 <body>
-       
-    <nav class="navbar navbar-expand-lg mb-4" style="background-color: #6C7A89;">
-        <div class="container-fluid">
-            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                <li class="nav-item menu"><a class="nav-link text-white" href="http://localhost/construcao_oficial/menu/menu.html">Menu</a></li>
-                <li class="nav-item login"><a class="nav-link text-white" href="http://localhost/construcao_oficial/login/login.php">Login</a></li>
-                <li class="nav-item cadastroo"><a class="nav-link text-white" href="http://localhost/construcao_oficial/cadastroP/cadastroP.php">Cadastro de produtos</a></li>
-                <li class="nav-item movimentacao"><a class="nav-link text-white" href="http://localhost/construcao_oficial/cadastroM/cadstroM.php">Cadastro movimentação</a></li>
-                <li class="nav-item estoque"><a class="nav-link text-white" href="http://localhost/construcao_oficial/tabelas/tabelasProdutos.php">Estoque</a></li>
-            </ul>
-            <img src="/icon.png" id="icone-usuario" style="position: absolute; right: 15px; top: 10px; width: 30px; height: 30px; cursor: pointer;">
-        </div>
-    </nav>
-    
-    <div id="info-usuario" style="display:none; position: absolute; right: 20px; top: 90px; background-color: #fcd378; border: 1px solid #ccc; padding: 15px; z-index: 100; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+
+    <div class="header-container">
+        <ul>
+            <li class="menu"><a href="http://localhost/construcao_oficial/menu/menu.html">Menu</a></li>
+            <li class="login"><a href="http://localhost/construcao_oficial/login/login.php">Login</a></li>
+            <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroP/cadastroP.php">Cadastro de
+                    Prod.</a></li>
+            <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroM/cadstroM.php">Cadastro
+                    de Mov.</a></li>
+            <li class="estoque"><a href="http://localhost/construcao_oficial/tabelas/tabelasProdutos.php">Estoque</a>
+            </li>
+            <li class="login">
+                <a href="#" id="btn-logout">Sair (Logout)</a>
+            </li>
+            <li class="login"><img src="../imagens/people.png" id="icone-usuario"></li>
+
+            <li><img src="../imagens/logo.png" alt="logo" class="logo"></li>
+        </ul>
+    </div>
+
+    <div id="info-usuario"
+        style="display:none; position: absolute; right: 20px; top: 90px; background-color: #fcd378; border: 1px solid #ccc; padding: 15px; z-index: 100; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
         <h4 style="margin-top: 0;">Usuário Logado</h4>
         <p style="margin: 5px 0;">Nome: <strong id="display-nome"></strong></p>
         <p style="margin: 5px 0;">Email: <strong id="display-email"></strong></p>
     </div>
 
     <div class="container mt-4">
-        
+
         <?php
         // Bloco de processamento PHP e alertas (Mantido, mas com classes Bootstrap para alertas)
-        function verificarAlertas($conn) {
+        function verificarAlertas($conn)
+        {
             // ... (função mantida) ...
             $alertas = [];
             $sql = "SELECT 
@@ -68,7 +80,7 @@ if (!$conn) {
             $observacao = $_POST['observacao'];
 
             $usuario = $_POST['usuario']; // Novo campo para o usuário
-
+        
             if ($tipo == 'saida') {
                 $sql_check = "SELECT quantidade FROM produto WHERE idproduto = $produto_id";
                 $result_check = mysqli_query($conn, $sql_check);
@@ -120,7 +132,7 @@ if (!$conn) {
             }
         }
         ?>
-        
+
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
                 <div class="card custom-card">
@@ -151,22 +163,25 @@ if (!$conn) {
 
                             <div class="mb-3">
                                 <label for="quantidade" class="form-label">Quantidade:</label>
-                                <input type="number" step="0.01" class="form-control custom-input" name="quantidade" id="quantidade" required>
+                                <input type="number" step="0.01" class="form-control custom-input" name="quantidade"
+                                    id="quantidade" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="data_movimentacao" class="form-label">Data da Movimentação:</label>
-                                <input type="datetime-local" class="form-control custom-input" name="data_movimentacao" id="data_movimentacao"
-                                    value="<?php echo date('Y-m-d\TH:i'); ?>" required>
+                                <input type="datetime-local" class="form-control custom-input" name="data_movimentacao"
+                                    id="data_movimentacao" value="<?php echo date('Y-m-d\TH:i'); ?>" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="observacao" class="form-label">Observação:</label>
-                                <textarea class="form-control custom-input" name="observacao" id="observacao" rows="3"></textarea>
+                                <textarea class="form-control custom-input" name="observacao" id="observacao"
+                                    rows="3"></textarea>
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" name="registrar_movimentacao" class="btn custom-btn">Registrar Movimentação</button>
+                                <button type="submit" name="registrar_movimentacao" class="btn custom-btn">Registrar
+                                    Movimentação</button>
                             </div>
                         </form>
                     </div>
@@ -225,4 +240,5 @@ if (!$conn) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./cadastrom.js"></script>
 </body>
+
 </html>

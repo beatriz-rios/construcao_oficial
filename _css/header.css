@@ -1,0 +1,121 @@
+/* Definição de Cores Baseada na Imagem e nas Solicitações */
+:root {
+    --cor-fundo-header: #1a1a2e;
+    /* Azul/Preto Escuro do cabeçalho */
+    --cor-texto-principal: #e0e0e0;
+    /* Cinza claro para o texto */
+    --cor-botao-fundo: #000000;
+    /* Azul inicial do botão (cor da imagem) */
+    --cor-hover-vermelho: #E74C3C;
+    /* Vermelho Vibrante para o hover */
+    --cor-hover-texto: #1a1a2e;
+    /* Texto escuro para contraste no hover vermelho */
+    --cor-borda-clara: #333333;
+    /* Borda sutil */
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Container do Cabeçalho (Logo + Navbar) */
+.header-container {
+    display: flex;
+    justify-content: flex-end;
+    /* Empurra logo para esquerda, navbar para direita */
+    align-items: center;
+    background-color: var(--cor-fundo-header);
+    padding: 10px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid var(--cor-borda-clara);
+}
+
+/* Estilo do Logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+    height: 40px;
+    /* Altura do logo (ajuste se necessário) */
+    width: auto;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.7));
+}
+
+/* Estilo da Barra de Navegação (NAVBAR) */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo dos Itens da Lista */
+li {
+    margin-left: 20px;
+}
+
+/* Estilo do Link (Botão Login) */
+li a {
+    display: inline-block;
+    padding: 10px 22 px;
+    text-decoration: none;
+    color: var(--cor-texto-principal);
+    /* Texto claro */
+    background-color: var(--cor-botao-fundo);
+    /* Fundo azul inicial */
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    width: 120px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 1000;
+    cursor: pointer;
+    /* Transição suave para o efeito dinâmico */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+
+.logo {
+    height: 40px;
+    /* Altura do logo (ajuste se necessário) */
+    width: auto;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.7));
+    position: absolute;
+    left: 1%;
+    top: 2%;
+}
+
+
+/*ESTILIZANDO BOTAO NAVBAR login*/
+.login a:hover {
+    background-color: #A52A2A;
+    color: black;
+    border-radius: 5px;
+}
+
+/*ESTILIZANDO BOTAO NAVBAR CADASTRO*/
+.cadastroo a:hover {
+    background-color: #FFB81C;
+    color: black;
+    border-radius: 5px;
+}
+
+/*ESTILIZANDO BOTAO NAVBAR ESTOQUE*/
+.estoque a:hover {
+    background-color: #003366;
+    color: white;
+    border-radius: 5px;
+}
+
+.movimentacao a:hover {
+    background-color: #A52A2A;
+    color: black;
+    border: 5px;
+}

@@ -5,76 +5,17 @@ body {
     padding: 0;
 }
 
-/* ==================================== */
-/* NAVBAR (Lista <ul> no cadastroP.php) */
-/* ==================================== */
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #6C7A89; /* Azul Acinzentado (Cor da NavBar do cadastrom.css) */
-    display: flex; /* Alinha os itens horizontalmente (como o navbar-expand do Bootstrap) */
-    align-items: center; /* Alinha verticalmente */
-    justify-content: center; /* Centraliza os botões horizontalmente */
-    height: 50px; /* Altura padrão para navbars */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
-}
-
-
-li a {
-    display: block;
-    color: white !important; /* Cor branca inicial, como o nav-link padrão */
-    background-color: black;
-    text-align: center;
-    padding: 8px 15px; /* Padding ajustado para o visual de botão */
-    text-decoration: none;
-    margin: 0 5px; /* Margem entre os botões */
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-weight: bold;
-}
-
-/* ------------------ */
-/* Estilos de Hover (Replicando o esquema de cores do cadastrom.css) */
-/* ------------------ */
-
-/* Menu */
-.menu a:hover {
-    background-color: #D9D9D9 !important; /* Cinza claro */
-    color: black !important;
-}
-
-/* Login */
-.login a:hover {
-    background-color: #FFB81C !important; /* Laranja/Amarelo */
-    color: black !important;
-}
-
-/* Cadastro de Produtos e Movimentação */
-.cadastroo a:hover,
-.movimentacao a:hover {
-    background-color: #A52A2A !important; /* Marrom escuro/Tijolo */
-    color: black !important;
-}
-
-/* Estoque */
-.estoque a:hover {
-    background-color: #003366 !important; /* Azul escuro */
-    color: white !important;
-}
-
 /* ------------------ */
 /* ÍCONE DE USUÁRIO */
 /* ------------------ */
 
 /* Coloca o ícone no lado direito da barra */
 #icone-usuario {
-    height: 30px; 
+    height: 30px;
     width: auto;
     cursor: pointer;
-    margin-left: auto; /* Empurra o ícone e a lista para o canto direito */
+    margin-left: auto;
+    /* Empurra o ícone e a lista para o canto direito */
     margin-right: 15px;
 }
 
@@ -91,7 +32,8 @@ li a {
 
 /* Estilo do Card Principal (fundo amarelo) */
 .cadastro {
-    background-color: #fcd378 !important; /* Cor de fundo amarelo do cadastrom.css */
+    background-color: #fcd378 !important;
+    /* Cor de fundo amarelo do cadastrom.css */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 30px;
@@ -103,7 +45,7 @@ li a {
 #ids {
     width: calc(100% - 10px);
     padding: 8px;
-    margin: 5px 0 15px 0; 
+    margin: 5px 0 15px 0;
     border: 1px solid #ccc !important;
     border-radius: 4px;
     box-sizing: border-box;
@@ -113,7 +55,8 @@ li a {
 
 /* Botão Enviar */
 #env {
-    background-color: #E0E0E0 !important; /* Cor cinza claro */
+    background-color: #E0E0E0 !important;
+    /* Cor cinza claro */
     color: black !important;
     padding: 10px 20px;
     border: none;
@@ -126,13 +69,15 @@ li a {
 }
 
 #env:hover {
-    background-color: #cccccc !important; 
+    background-color: #cccccc !important;
 }
 
 /* Mensagem de sucesso do PHP */
 .text {
-    color: #003366 !important; /* Texto Azul escuro */
-    background-color: #d4edda !important; /* Fundo verde claro */
+    color: #003366 !important;
+    /* Texto Azul escuro */
+    background-color: #d4edda !important;
+    /* Fundo verde claro */
     border: 1px solid #c3e6cb !important;
     padding: 10px;
     margin: 10px auto;
@@ -144,7 +89,7 @@ li a {
 }
 
 /* Estilo para a mensagem de conexão bem-sucedida */
-p:first-of-type { 
+p:first-of-type {
     color: #003366;
     text-align: center;
     font-weight: bold;

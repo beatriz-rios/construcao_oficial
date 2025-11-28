@@ -1,4 +1,4 @@
-*{
+* {
 
     margin: 0;
     padding: 0;
@@ -6,31 +6,14 @@
     outline: 0;
 }
 
-/* ESTILIZANDO A NAVBAR */
-ul {
-    list-style-type: none;
-    padding: 20px 0; 
-    margin: 10px;
+body {
+    /*Imagem tamanho, posicao*/
     overflow: hidden;
-    background-color: #6C7A89;
-    border-radius: 10px;
-    
-    /* --- ALTERADO AQUI --- */
-    width: 98%; /* Aumentado para 98% para alongar a barra quase completamente */
-    /* max-width: 1200px; Removido para que não haja limite em telas grandes */
-    margin-top: 15px; 
-    
-    /* Adicionando Flexbox para distribuir os itens */
-    display: flex;
-    justify-content: space-around; /* Distribui os itens uniformemente */
-    align-items: center; 
-}
-
-/*ESTILIZANDO BOTAO NAVBAR MENU*/
-.menu a:hover {
-    background-color: #D9D9D9;
-    color: black;
-    border-radius: 5px;
+    background-image: url('../imagens/cidadeee.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Necessário para posicionamento do .loginn se precisar de ajustes */
 }
 
 /*ESTILIZANDO BOTAO NAVBAR login*/
@@ -58,33 +41,6 @@ ul {
     background-color: #A52A2A;
     color: black;
     border: 5px;
-}
-
-ul li {
-    /*separando os botoes da navbar*/
-    display: inline-block;
-    margin: 0;
-
-}
-
-
-
-/* DEFININDO TRANSICAO DE CORES NAVBAR,ALINHANDO,DEFININDO TAMANHO DE FONTE */
-ul li a {
-    display: block;
-    color: white;
-    background-color: black;
-    text-align: center;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 25px;
-    transition: background-color 0.5s ease;
-    border-radius: 5px;          
-    
-    /* Mantido o padding de 10px 40px para botões grandes */
-    padding: 10px 40px; 
-    width: 100%; 
-    box-sizing: border-box; 
 }
 
 
@@ -138,30 +94,6 @@ ul li a {
 
 }
 
-
-
-/* NOVO: Container para aplicar o fundo da cidade */
-.form-container {
-    /* Defina o tamanho do container de fundo */
-    width: 8000px;
-    height: 690px;
-    padding: 2%;
-
-    /*Imagem tamanho, posicao*/
-    overflow: hidden;
-    background-image: url('../imagens/cidade.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    /* Necessário para posicionamento do .loginn se precisar de ajustes */
-    margin-top: -1%;
-    border-radius: 5px;
-    overflow: hidden;
-}
 
 
 /* DIV ONDE ESTÃO OS CAMPOS DO FORMULÁRIO */
@@ -251,7 +183,7 @@ ul li a {
     position: absolute;
     right: 20px;
     top: 90px;
-    background-color: white;
+    background-color: rgb(211, 38, 38);
     border: 1px solid #ccc;
     padding: 10px;
     z-index: 100;
@@ -265,7 +197,7 @@ ul li a {
     position: absolute;
     right: 20px;
     top: 90px;
-    background-color: white;
+    background-color: rgb(199, 56, 56);
     border: 1px solid #ccc;
     padding: 10px;
     z-index: 100;

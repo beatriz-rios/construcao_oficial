@@ -1,57 +1,9 @@
 body {
-    background-color: #D9D9D9; /* Fundo cinza claro */
+    background-color: #D9D9D9;
+    /* Fundo cinza claro */
     font-family: Arial, sans-serif;
 }
 
-/* ==================================== */
-/* NAVBAR (Apenas para garantir o fundo e hover, já que o layout é Bootstrap) */
-/* ==================================== */
-
-/* A cor de fundo da NAV já foi definida inline no PHP com #6C7A89 */
-
-/* Estilos de Hover (Mantendo esquema de cores) */
-.nav-link {
-    transition: background-color 0.3s ease;
-}
-
-.menu a:hover,
-.navbar-nav .menu .nav-link:hover {
-    background-color: #D9D9D9 !important; /* Cinza claro */
-    color: black !important;
-    border-radius: 5px;
-}
-
-.login a:hover,
-.navbar-nav .login .nav-link:hover {
-    background-color: #FFB81C !important; /* Laranja/Amarelo */
-    color: black !important;
-    border-radius: 5px;
-}
-
-.cadastroo a:hover,
-.movimentacao a:hover,
-.navbar-nav .cadastroo .nav-link:hover,
-.navbar-nav .movimentacao .nav-link:hover { 
-    background-color: #A52A2A !important; /* Marrom escuro/Tijolo */
-    color: black !important;
-    border-radius: 5px;
-}
-
-.estoque a:hover,
-.navbar-nav .estoque .nav-link:hover {
-    background-color: #003366 !important; /* Azul escuro */
-    color: white !important;
-    border-radius: 5px;
-}
-
-/* Garante que os links tenham a cor branca inicialmente (o Bootstrap muda para cor padrão) */
-.navbar-nav .nav-link {
-    color: white !important;
-    background-color: black;
-    margin: 0 5px;
-    padding: 8px 15px;
-    border-radius: 5px;
-}
 
 /* ==================================== */
 /* FORMULÁRIO E CARTÃO (CARD) */
@@ -59,21 +11,24 @@ body {
 
 /* Fundo amarelo para o Cartão de Formulário */
 .custom-card {
-    background-color: #fcd378 !important; /* Cor de fundo amarelo do quadrado principal */
+    background-color: #fcd378 !important;
+    /* Cor de fundo amarelo do quadrado principal */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: none !important;
 }
 
 /* Título Marrom */
 .custom-title {
-    color: #A52A2A !important; /* Marrom escuro */
+    color: #A52A2A !important;
+    /* Marrom escuro */
     font-size: 24px;
     font-weight: bold;
 }
 
 /* Botão Enviar (Cinza Claro) */
 .custom-btn {
-    background-color: #E0E0E0 !important; /* Cor cinza claro do botão */
+    background-color: #E0E0E0 !important;
+    /* Cor cinza claro do botão */
     color: black !important;
     padding: 10px 20px;
     border: none;
@@ -82,7 +37,8 @@ body {
 }
 
 .custom-btn:hover {
-    background-color: #cccccc !important; /* Cinza um pouco mais escuro */
+    background-color: #cccccc !important;
+    /* Cinza um pouco mais escuro */
 }
 
 /* Inputs do formulário (Para garantir que não sejam transparentes e mantenham a cor padrão do Bootstrap) */
@@ -98,23 +54,30 @@ body {
 
 /* Alerta de Sucesso (Fundo Verde Claro do seu CSS) */
 .alert-success {
-    color: #003366 !important; /* Texto Azul escuro */
-    background-color: #d4edda !important; /* Fundo verde claro */
+    color: #003366 !important;
+    /* Texto Azul escuro */
+    background-color: #d4edda !important;
+    /* Fundo verde claro */
     border-color: #c3e6cb !important;
 }
 
 /* Alerta de Erro (Fundo Vermelho Claro do seu CSS) */
 .alert-danger {
-    color: #A52A2A !important; /* Texto Marrom escuro */
-    background-color: #fcc !important; /* Fundo vermelho claro */
+    color: #A52A2A !important;
+    /* Texto Marrom escuro */
+    background-color: #fcc !important;
+    /* Fundo vermelho claro */
     border-color: #A52A2A !important;
 }
 
 /* Alerta de Estoque Baixo (Customizado para Azul Acinzentado do seu CSS) */
 .custom-alert-warning {
-    color: #212529 !important; /* Cor de texto padrão */
-    background-color: #fcd378 !important; /* Fundo Amarelo (como o card) */
-    border-color: #FFB81C !important; /* Borda Laranja/Amarelo */
+    color: #212529 !important;
+    /* Cor de texto padrão */
+    background-color: #fcd378 !important;
+    /* Fundo Amarelo (como o card) */
+    border-color: #FFB81C !important;
+    /* Borda Laranja/Amarelo */
     font-weight: bold;
 }
 
@@ -133,17 +96,20 @@ body {
 
 /* Cabeçalho da Tabela */
 .table thead {
-    background-color: #6C7A89 !important; /* Azul Acinzentado (Cor da NavBar) */
+    background-color: #6C7A89 !important;
+    /* Azul Acinzentado (Cor da NavBar) */
     color: white !important;
 }
 
 /* Cor das linhas zebradas (Bootstrap padrão já é bom, mas o hover precisa ser personalizado) */
 .table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.05); /* Cinza claro */
+    background-color: rgba(0, 0, 0, 0.05);
+    /* Cinza claro */
 }
 
 /* Efeito Hover na Tabela */
 .table tbody tr:hover {
-    background-color: #FFB81C !important; /* Laranja/Amarelo */
+    background-color: #FFB81C !important;
+    /* Laranja/Amarelo */
     cursor: default;
 }

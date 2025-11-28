@@ -35,34 +35,46 @@ $result = mysqli_query($conn, $sql);
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabela de Produtos</title>
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="tabelaProdutos.css">
-    <link rel="stylesheet" href="./cadastrop.css">
-  
+    <link rel="stylesheet" href="./tabelaProdutos.css">
+    <link rel="stylesheet" href="../_css/header.css">
+
 </head>
+
 <body>
 
     <!--NAV BAR-->
-    <ul>
-        <li class="menu"><a href="http://localhost/construcao_oficial/menu/menu.html">Menu</a></li>
-        <li class="login"><a href="http://localhost/construcao_oficial/login/login.php">Login</a></li>
-        <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroP/cadastroP.php">Cadastro de produtos</a></li>
-        <li class="movimentacao"><a href="http://localhost/construcao_oficial/cadastroM/cadstroM.php">Cadastro movimentação</a></li>
-        <li class="estoque"><a href="http://localhost/construcao_oficial/tabelas/tabelasProdutos.php    ">Estoque</a></li>
-        <li class="login"><img src="../imagens/people.png" id="icone-usuario"></li>
+    <div class="header-container">
+        <ul>
+            <li class="menu"><a href="http://localhost/construcao_oficial/menu/menu.html">Menu</a></li>
+            <li class="login"><a href="http://localhost/construcao_oficial/login/login.php">Login</a></li>
+            <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroP/cadastroP.php"
+                    class="texto-grande">Cadastro de
+                    Prod.</a></li>
+            <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroM/cadstroM.php"
+                    class="texto-grande">Cadastro
+                    de Mov.</a></li>
+            <li class="estoque"><a href="http://localhost/construcao_oficial/tabelas/tabelasProdutos.php">Estoque</a>
+            </li>
+            <li class="login">
+                <a href="#" id="btn-logout">Sair (Logout)</a>
+            </li>
+            <li class="login"><img src="../imagens/people.png" id="icone-usuario"></li>
 
-        <div id="info-usuario" style="display:none; position: absolute; right: 20px; top: 90px; background-color: #fcd378; border: 1px solid #ccc; padding: 15px; z-index: 100; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-        <h4 style="margin-top: 0;">Usuário Logado</h4>
-        <p style="margin: 5px 0;">Nome: <strong id="display-nome"></strong></p>
-        <p style="margin: 5px 0;">Email: <strong id="display-email"></strong></p>
+            <li><img src="../imagens/logo.png" alt="logo" class="logo"></li>
+
+            <div id="info-usuario"
+                style="display:none; position: absolute; right: 20px; top: 90px; background-color: #fcd378; border: 1px solid #ccc; padding: 15px; z-index: 100; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <h4 style="margin-top: 0;">Usuário Logado</h4>
+                <p style="margin: 5px 0;">Nome: <strong id="display-nome"></strong></p>
+                <p style="margin: 5px 0;">Email: <strong id="display-email"></strong></p>
+            </div>
+        </ul>
     </div>
-
-    </ul>
-
     <h1>Tabela de Produtos</h1>
     <table border="1">
         <thead>
@@ -83,7 +95,7 @@ $result = mysqli_query($conn, $sql);
         <tbody>
             <?php
             if (mysqli_num_rows($result) > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
+                while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row["idproduto"]) . "</td>";
                     echo "<td>" . htmlspecialchars($row["nome"]) . "</td>";
@@ -104,10 +116,11 @@ $result = mysqli_query($conn, $sql);
             ?>
         </tbody>
     </table>
-      <script src="tabelaProduto.js" defer></script>
-</body>
-</html>
+    <script src="tabelaProduto.js" defer></script>
 
-<?php
-mysqli_close($conn);
-?>
+    <?php
+    mysqli_close($conn);
+    ?>
+</body>
+
+</html>

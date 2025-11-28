@@ -1,0 +1,9 @@
+body {
+    /*Imagem tamanho, posicao*/
+    overflow: hidden;
+    background-image: url('../imagens/cidadeee.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Necessário para posicionamento do .loginn se precisar de ajustes */
+}

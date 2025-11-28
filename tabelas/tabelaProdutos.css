@@ -1,12 +1,25 @@
 body {
-    background-color: #D9D9D9; /* Fundo cinza claro */
+    /* Fundo cinza claro */
     font-family: Arial, sans-serif;
-    padding: 20px;
+    padding: 0;
+    margin: 0;
+
+    /*Imagem tamanho, posicao*/
+    overflow: hidden;
+    background-image: url('../imagens/cidadeee.jpg');
+    background-size: 100% cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Necessário para posicionamento do .loginn se precisar de ajustes */
+
+
 }
 
 /* Estilo para o Título principal */
 h1 {
-    color: #A52A2A; /* Marrom escuro/Tijolo (Cor de destaque usada nos outros CSS) */
+    background-color: rgba(0, 0, 0, 0.466);
+    color: #ff0000;
+    /* Marrom escuro/Tijolo (Cor de destaque usada nos outros CSS) */
     text-align: center;
     margin-bottom: 30px;
     padding-top: 10px;
@@ -17,8 +30,10 @@ h1 {
     overflow-x: auto;
     width: 95%;
     max-width: 1400px;
-    margin: 0 auto; /* Centraliza o container */
-    background-color: white; /* Fundo branco para a área da tabela */
+    margin: 0 auto;
+    /* Centraliza o container */
+    background-color: white;
+    /* Fundo branco para a área da tabela */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -28,30 +43,37 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 0;
-    font-size: 14px; /* Tamanho de fonte menor para caber mais colunas */
+    background-color: #f2f2f2;
+    font-size: 14px;
+    /* Tamanho de fonte menor para caber mais colunas */
 }
 
 /* Cabeçalho da Tabela */
 thead tr {
-    background-color: #6C7A89; /* Azul acinzentado (Cor da NavBar) */
+    background-color: #6C7A89;
+    /* Azul acinzentado (Cor da NavBar) */
     color: white;
 }
 
-table th, table td {
+table th,
+table td {
     padding: 12px 10px;
     text-align: left;
     border: 1px solid #ccc;
-    white-space: nowrap; /* Mantém o texto na linha para colunas estreitas */
+    white-space: nowrap;
+    /* Mantém o texto na linha para colunas estreitas */
 }
 
 /* Linhas zebradas (striped) */
 tbody tr:nth-child(even) {
-    background-color: #f2f2f2; /* Cinza muito claro */
+    background-color: #f2f2f2;
+    /* Cinza muito claro */
 }
 
 /* Linha de dados ao passar o mouse */
 tbody tr:hover {
-    background-color: #fcd378; /* Amarelo (Cor do container de formulário) */
+    background-color: #fcd378;
+    /* Amarelo (Cor do container de formulário) */
     color: black;
     cursor: default;
 }
