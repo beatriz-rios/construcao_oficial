@@ -1,43 +1,48 @@
 /**
- * Verifica se o usuário está logado (checa o localStorage).
- * Se não estiver logado, redireciona para a página de login.
+ * LÓGICA DE SEGURANÇA E FUNCIONALIDADES DA PÁGINA DE ESTOQUE (tabelasProdutos.php)
+ */
+
+// --- 1. FUNÇÃO DE VERIFICAÇÃO DE LOGIN (CLIENT-SIDE) ---
+/**
+ * Verifica se o usuário tem os dados de login no localStorage.
+ * Se o token estiver faltando ou for inválido, redireciona o usuário para o login.
+ * (Esta é uma segurança secundária e rápida, a segurança primária está no PHP).
  */
 function verificarLogin() {
     const usuarioLogadoJson = localStorage.getItem('usuarioLogado');
     const loginPageUrl = '../login/login.php'; // Ajuste o caminho se necessário!
 
-    // Se a chave 'usuarioLogado' não existir no localStorage, o usuário não está logado.
+    // Se a chave 'usuarioLogado' não existir, redireciona.
     if (!usuarioLogadoJson) {
-        // Redireciona e encerra a execução do script.
         window.location.href = loginPageUrl; 
         return false;
     }
     
-    // Tenta fazer o parse do JSON para garantir que é um objeto válido.
+    // Tenta fazer o parse e checa a validade dos dados.
     try {
         const usuarioLogado = JSON.parse(usuarioLogadoJson);
-
-        // Opcional: Uma checagem adicional para garantir que o objeto não é null e contém dados essenciais.
+        // Checa se o objeto é nulo ou não tem dados essenciais
         if (!usuarioLogado || !usuarioLogado.nome || !usuarioLogado.email) {
-            // Se os dados estiverem incompletos, remove a chave e redireciona.
-            localStorage.removeItem('usuarioLogado');
+            localStorage.removeItem('usuarioLogado'); // Limpa dados corrompidos
             window.location.href = loginPageUrl; 
             return false;
         }
 
     } catch (e) {
-        // Se houver um erro no parse (JSON inválido), redireciona.
+        // JSON inválido
+        console.error("Erro no parse do objeto 'usuarioLogado':", e);
         localStorage.removeItem('usuarioLogado');
         window.location.href = loginPageUrl; 
         return false;
     }
 
-    // Se chegou até aqui, o usuário está logado e o script continua a execução normal.
+    // Login OK
     return true;
 }
 
-// Chama a função imediatamente para proteger a página
+// Chama a função imediatamente para proteger a página ANTES de carregar o resto
 verificarLogin();
+
 
 
 //ESTILIZACAO DO PERFIL DO USUARIO (Revisado para buscar do localStorage)

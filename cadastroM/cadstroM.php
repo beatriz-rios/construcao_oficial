@@ -24,11 +24,11 @@ if (!$conn) {
     <nav class="navbar navbar-expand-lg mb-4" style="background-color: #6C7A89;">
         <div class="container-fluid">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                <li class="nav-item menu"><a class="nav-link text-white" href="http://localhost/aulaPHP/construcao/menu/menu.php">Menu</a></li>
-                <li class="nav-item login"><a class="nav-link text-white" href="http://localhost/aulaPHP/construcao/login/login.php">Login</a></li>
-                <li class="nav-item cadastroo"><a class="nav-link text-white" href="http://localhost/aulaPHP/construcao/cadastroP/cadastroP.php">Cadastro de produtos</a></li>
-                <li class="nav-item movimentacao"><a class="nav-link text-white" href="http://localhost/aulaPHP/construcao/cadastroM/cadastroM.php">Cadastro movimentação</a></li>
-                <li class="nav-item estoque"><a class="nav-link text-white" href="http://localhost/aulaPHP/construcao/cadastroP/tabelaProdutos.php">Estoque</a></li>
+                <li class="nav-item menu"><a class="nav-link text-white" href="http://localhost/construcao_oficial/menu/menu.html">Menu</a></li>
+                <li class="nav-item login"><a class="nav-link text-white" href="http://localhost/construcao_oficial/login/login.php">Login</a></li>
+                <li class="nav-item cadastroo"><a class="nav-link text-white" href="http://localhost/construcao_oficial/cadastroP/cadastroP.php">Cadastro de produtos</a></li>
+                <li class="nav-item movimentacao"><a class="nav-link text-white" href="http://localhost/construcao_oficial/cadastroM/cadstroM.php">Cadastro movimentação</a></li>
+                <li class="nav-item estoque"><a class="nav-link text-white" href="http://localhost/construcao_oficial/tabelas/tabelasProdutos.php">Estoque</a></li>
             </ul>
             <img src="/icon.png" id="icone-usuario" style="position: absolute; right: 15px; top: 10px; width: 30px; height: 30px; cursor: pointer;">
         </div>

@@ -62,8 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <ul>
-        <li class="menu"><a href="http://localhost/aulaPHP/construcao/menu/menu.php">Menu</a></li>
-        <li class="login"><a href="http://localhost/aulaPHP/construcao/login/login.php">Login</a></li>
+        <li class="menu"><a href="http://localhost/construcao_oficial/menu/menu.html">Menu</a></li>
+        <li class="login"><a href="http://localhost/construcao_oficial/login/login.php">Login</a></li>
         <li class="cadastroo"><a
                 href="http://localhost/construcao_oficial/cadastroP/cadastroP.php">Cadastro de
                 Produto</a></li>

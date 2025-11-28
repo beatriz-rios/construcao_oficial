@@ -1,131 +1,151 @@
-body{
-/* Imagem tamanho, posicao */
- background-image: url('../imagens/tijolo.png'); 
- background-size: cover; 
- background-position: center; 
- background-repeat: no-repeat;
- overflow-x: hidden; /* MANTIDO: Evita a barra de rolagem horizontal indesejada */
-/* overflow: hidden; *//* Alternativa se quiser remover AMBAS as barras de rolagem */
-min-height: 100vh; /* Faz com que o body tenha pelo menos a altura da tela */
- margin: 0; /* Remove a margem padrão do body */
-display: flex;
-flex-direction: column; /* Empilha o conteúdo (navbar, cinza) */
- align-items: center; /* Centraliza o conteúdo horizontalmente */
- border-radius: 5px; 
-
+/* Definição de Cores Baseada na Imagem e nas Solicitações */
+:root {
+    --cor-fundo-header: #1a1a2e;       /* Azul/Preto Escuro do cabeçalho */
+    --cor-texto-principal: #e0e0e0;    /* Cinza claro para o texto */
+    --cor-botao-fundo: #000000;        /* Azul inicial do botão (cor da imagem) */
+    --cor-hover-vermelho: #E74C3C;     /* Vermelho Vibrante para o hover */
+    --cor-hover-texto: #1a1a2e;        /* Texto escuro para contraste no hover vermelho */
+    --cor-borda-clara: #333333;        /* Borda sutil */
 }
-/* ... restante do seu código CSS ... */
 
-/* ESTILIZANDO A NAVBAR */
+/* Reset Básico e Fundo */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', 'Montserrat', Arial, sans-serif; 
+    background-color: #0d121c; /* Fundo escuro do body*/
+    color: var(--cor-texto-principal);
+    min-height: 100vh;
+}
+
+/* Container do Cabeçalho (Logo + Navbar) */
+.header-container {
+    display: flex; 
+    justify-content: space-between; /* Empurra logo para esquerda, navbar para direita */
+    align-items: center; 
+    background-color: var(--cor-fundo-header);
+    padding: 10px 30px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+    border-bottom: 1px solid var(--cor-borda-clara);
+}
+
+/* Estilo do Logo */
+.logo-container {
+    display: flex; 
+    align-items: center;
+}
+
+.site-logo {
+    height: 40px; /* Altura do logo (ajuste se necessário) */
+    width: auto; 
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.7)); 
+}
+
+/* Estilo da Barra de Navegação (NAVBAR) */
 ul {
     list-style-type: none;
-    padding: 20px 0; 
-    margin: 10px;
-    overflow: hidden;
-    background-color: #6C7A89;
-    border-radius: 10px;
-    
-    /* --- ALTERADO AQUI --- */
-    width: 98%; /* Aumentado para 98% para alongar a barra quase completamente */
-    /* max-width: 1200px; Removido para que não haja limite em telas grandes */
-    margin-top: 15px; 
-    
-    /* Adicionando Flexbox para distribuir os itens */
-    display: flex;
-    justify-content: space-around; /* Distribui os itens uniformemente */
-    align-items: center; 
-}
-
-
-/* ESTILIZANDO BOTAO NAVBAR login */
-.login a:hover{
-    background-color: #FFB81C;
-    color: black;
-    border-radius: 5px;
-}
-
-/* ESTILIZANDO BOTAO NAVBAR CADASTRO */
-.cadastroo a:hover{ 
-    background-color: #A52A2A;
-    color: black;
-    border-radius: 5px;
-}
-/* ESTILIZANDO BOTAO NAVBAR ESTOQUE */
-.estoque a:hover{
-    background-color: #003366;
-    color: white;
-    border-radius: 5px;
-}
-.movimentacao a:hover{
-    background-color:  #A52A2A;
-    color: black;
-    border: 5px;
-}
-
-ul li {
-    /* Mantém o display para que os <a> ocupem o espaço corretamente */
-    display: inline-block; 
-    margin: 0; /* Remove as margens fixas */
-}
-
-
-
-
-/* DEFININDO TRANSICAO DE CORES NAVBAR,ALINHANDO,DEFININDO TAMANHO DE FONTE */
-ul li a {
-    display: block;
-    color: white;
-    background-color: black;
-    text-align: center;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 25px;
-    transition: background-color 0.5s ease;
-    border-radius: 5px;          
-    
-    /* Mantido o padding de 10px 40px para botões grandes */
-    padding: 10px 40px; 
-    width: 100%; 
-    box-sizing: border-box; 
-}
-
-
-
-/* ESTILIZANDO CARD CINZA ESCURO */
-.cinza{
-    background-color: #A5ABB0;
+    margin: 0;
+    padding: 0;
     display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    width: 80%; /* largura */
-    min-height: 75vh; 
-    margin: 4.8% auto; /* Ajuste o margin para centralizar e dar espaço */
-    border-radius: 5px; /*borda*/
-}
-
-/* CARD CINZA CLARO */
-.cinzz{
-    background-color: #D9D9D9;
-    display: flex;/*DEIXA PARADO*/
-    flex-direction: column; /* Adicionado para empilhar o texto e a imagem */
-    justify-content: center;
     align-items: center;
-    text-align: center; /* Adicionado para centralizar o texto dentro de cinzz */
-    width: 75%;
-    min-height: 50vh; 
-    margin: 2.4% auto; /*tamanho para cima/baixo*/
-    border-radius: 5px;
 }
 
-/* FONTE TEXTO */
-.font{
-  font-size: 39px;
-  text-align: center; /*texto no centro*/
-  margin-bottom: 2%; /* Reduzido o margin-bottom de 16% para 2% */
+/* Estilo dos Itens da Lista */
+li {
+    margin-left: 20px; 
 }
 
-/*IMAGEM*/
-.img{
-   width: 35%; /*tamanho da imagem*/
-   margin-top: 10px; /* Ajustado para dar um pequeno espaço da imagem ao texto */
+/* Estilo do Link (Botão Login) */
+li a {
+    display: inline-block; 
+    padding: 10px 22    px; 
+    text-decoration: none;
+    color: var(--cor-texto-principal); /* Texto claro */
+    background-color: var(--cor-botao-fundo); /* Fundo azul inicial */
+    border: none;
+    border-radius: 5px; 
+    font-size: 15px;
+    font-weight: 1000; 
+    cursor: pointer;
+    /* Transição suave para o efeito dinâmico */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
+
+/* Estilo para o HOVER do Botão de Login (COM VERMELHO) */
+li a:hover {
+    background-color: var(--cor-hover-vermelho); /* Fundo VERMELHO VIBRANTE */
+    color: var(--cor-hover-texto); /* Texto escuro para alto contraste */
+    transform: translateY(-1px); /* Efeito sutil de levantar */
+    box-shadow: 0 4px 8px rgba(231, 76, 60, 0.6); /* Sombra vermelha no hover */
+}
+
+
+/* Estilos Adicionais para o Background (Opcional) */
+/* Se quiser simular o background da imagem no resto da página, use o código abaixo e ajuste o caminho da imagem. */
+
+body::before {
+    content: '';
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../imagens/cidadeee.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.6; 
+    z-index: -1; 
+}
+/* --- ESTILOS DO CARD CENTRAL --- */
+
+/* Centraliza o card na tela */
+.card-central {
+    /* Ocupa o espaço restante da viewport, empurrando o card para o centro */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: calc(100vh - 60px); /* Subtrai a altura aproximada do header */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Estilo do Card (classe 'font') */
+.font {
+    background-color: rgba(128, 128, 128, 0.7); /* Cinza com 70% de opacidade */
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px); /* Efeito de vidro fosco para o fundo */
+    width: 400px; /* Largura fixa (ajuste conforme o design desejado) */
+    max-width: 90%;
+    text-align: center;
+}
+
+/* Container do Logo e Texto dentro do Card */
+.card-content {
+    display: flex;
+    align-items: center; /* Alinha o logo e o texto verticalmente */
+    gap: 20px; /* Espaçamento entre o logo e o texto */
+    margin-bottom: 20px;
+    text-align: left; /* Garante que o texto comece à esquerda */
+}
+
+/* Estilo do Logo dentro do Card */
+.card-logo {
+    height: 60px; /* Tamanho maior para o logo no card */
+    width: auto;
+    /* Remove o drop-shadow do logo no header para dar um visual mais limpo aqui */
+    filter: none;
+}
+
+/* Estilo do Parágrafo */
+.font p {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1.4;
+    color: var(--cor-texto-principal);
+}
+
+
