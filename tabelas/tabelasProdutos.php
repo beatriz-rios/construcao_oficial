@@ -42,7 +42,7 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="tabelaProdutos.css">
     <link rel="stylesheet" href="./cadastrop.css">
-    <script src="tabelaProdutos.js"></script>
+  
 </head>
 <body>
 
@@ -104,6 +104,7 @@ $result = mysqli_query($conn, $sql);
             ?>
         </tbody>
     </table>
+      <script src="tabelaProduto.js" defer></script>
 </body>
 </html>
 
