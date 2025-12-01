@@ -1,7 +1,4 @@
 <?php
-
-
-
 $servername = "localhost";
 $database = "saep_db";
 $username = "root";
@@ -25,10 +22,9 @@ $sql = "
         p.textura,
         p.aplicacao,
         p.estoque_minimo,
-        (COALESCE(SUM(CASE WHEN m.tipo_entrada_saida = 'entrada' THEN m.quantidade ELSE -m.quantidade END), 0) + p.quantidade) AS quantidade_atual
+        p.quantidade AS quantidade_atual
     FROM produto p
-    LEFT JOIN movimentacao m ON p.idproduto = m.produto_idproduto
-    GROUP BY p.idproduto
+    ORDER BY p.nome
 ";
 $result = mysqli_query($conn, $sql);
 ?>
@@ -47,7 +43,6 @@ $result = mysqli_query($conn, $sql);
 
 <body>
 
-    <!--NAV BAR-->
     <div class="header-container">
         <ul>
             <li class="menu"><a href="http://localhost/construcao_oficial/menu/menu.html">Menu</a></li>
@@ -55,7 +50,7 @@ $result = mysqli_query($conn, $sql);
             <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroP/cadastroP.php"
                     class="texto-grande">Cadastro de
                     Prod.</a></li>
-            <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroM/cadstroM.php"
+            <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroM/cadastroM.php"
                     class="texto-grande">Cadastro
                     de Mov.</a></li>
             <li class="estoque"><a href="http://localhost/construcao_oficial/tabelas/tabelasProdutos.php">Estoque</a>

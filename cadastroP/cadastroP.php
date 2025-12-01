@@ -20,7 +20,7 @@
             <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroP/cadastroP.php"
                     class="texto-grande">Cadastro de
                     Prod.</a></li>
-            <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroM/cadstroM.php"
+            <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroM/cadastroM.php"
                     class="texto-grande">Cadastro
                     de Mov.</a></li>
             <li class="estoque"><a href="http://localhost/construcao_oficial/tabelas/tabelasProdutos.php">Estoque</a>

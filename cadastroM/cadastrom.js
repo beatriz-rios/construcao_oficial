@@ -9,10 +9,10 @@ function verificarLogin() {
     // Se a chave 'usuarioLogado' não existir no localStorage, o usuário não está logado.
     if (!usuarioLogadoJson) {
         // Redireciona e encerra a execução do script.
-        window.location.href = loginPageUrl; 
+        window.location.href = loginPageUrl;
         return false;
     }
-    
+
     // Tenta fazer o parse do JSON para garantir que é um objeto válido.
     try {
         const usuarioLogado = JSON.parse(usuarioLogadoJson);
@@ -21,14 +21,14 @@ function verificarLogin() {
         if (!usuarioLogado || !usuarioLogado.nome || !usuarioLogado.email) {
             // Se os dados estiverem incompletos, remove a chave e redireciona.
             localStorage.removeItem('usuarioLogado');
-            window.location.href = loginPageUrl; 
+            window.location.href = loginPageUrl;
             return false;
         }
 
     } catch (e) {
         // Se houver um erro no parse (JSON inválido), redireciona.
         localStorage.removeItem('usuarioLogado');
-        window.location.href = loginPageUrl; 
+        window.location.href = loginPageUrl;
         return false;
     }
 
@@ -69,16 +69,29 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
 
         // Define os valores para exibição
-        const nome = usuarioLogado ? usuarioLogado.nome : "Usuário Desconhecido (Faça Login)";
-        const email = usuarioLogado ? usuarioLogado.email : "N/A";
+        // const nome = usuarioLogado ? usuarioLogado.nome : "Usuário Desconhecido (Faça Login)";
+        // const email = usuarioLogado ? usuarioLogado.email : "N/A";
 
+         let nome; 
+        let email; 
+
+       
+        if (usuarioLogado) {
+            // Se conseguimos carregar o usuário: Usamos os dados reais.
+            nome = usuarioLogado.nome;
+            email = usuarioLogado.email;
+        } else {
+            // Se NÃO conseguimos (falha no parse ou não logado): Usamos as mensagens padrão.
+            nome = "Usuário Desconhecido (Faça Login)";
+            email = "N/A";
+        }
         // Preenche a div de informações
         displayNome.textContent = nome;
         displayEmail.textContent = email;
 
         // 3. Alterna a visibilidade do painel (como um "toggle")
         const isVisible = infoPainel.style.display === 'block';
-        
+
         if (isVisible) {
             infoPainel.style.display = 'none'; // Esconde
         } else {
@@ -88,4 +101,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // 4. Adiciona o evento de clique ao ícone
     iconeUsuario.addEventListener('click', atualizarEExibirInfo);
-    });
+});

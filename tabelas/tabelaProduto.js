@@ -63,9 +63,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
 
             // Preenche a div de informações
-            displayNome.textContent = usuarioLogado ? usuarioLogado.nome : "Usuário Desconhecido (Faça Login)";
-            displayEmail.textContent = usuarioLogado ? usuarioLogado.email : "N/A";
+            let nome; // Primeiro, declare a variável
+        if (usuarioLogado) {
+            // Se a condição for VERDADEIRA
+            nome = usuarioLogado.nome;
+        } else {
+            // Se a condição for FALSA
+            nome = "Usuário Desconhecido (Faça Login)";
+        }
+        // Agora, a variável 'nome' tem o valor correto.
 
+
+        let email; // Primeiro, declare a variável
+        if (usuarioLogado) {
+            // Se a condição for VERDADEIRA
+            email = usuarioLogado.email;
+        } else {
+            // Se a condição for FALSA
+            email = "Usuário Desconhecido (Faça Login)";
+        }
             // Alterna a visibilidade do painel
             const isVisible = infoPainel.style.display === 'block';
             infoPainel.style.display = isVisible ? 'none' : 'block';

@@ -73,11 +73,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 console.error("Erro ao fazer parse do usuário no localStorage", e);
             }
         }
+  let nome; 
+        let email; 
 
-        // Define os valores para exibição
-        const nome = usuarioLogado ? usuarioLogado.nome : "Usuário Desconhecido (Faça Login)";
-        const email = usuarioLogado ? usuarioLogado.email : "N/A";
-
+       
+        if (usuarioLogado) {
+            // Se conseguimos carregar o usuário: Usamos os dados reais.
+            nome = usuarioLogado.nome;
+            email = usuarioLogado.email;
+        } else {
+            // Se NÃO conseguimos (falha no parse ou não logado): Usamos as mensagens padrão.
+            nome = "Usuário Desconhecido (Faça Login)";
+            email = "N/A";
+        }
+        // Preenche a div de informações
+        displayNome.textContent = nome;
+        displayEmail.textContent = email;
         // Preenche a div de informações
         displayNome.textContent = nome;
         displayEmail.textContent = email;

@@ -31,7 +31,7 @@ if (!$conn) {
             <li class="login"><a href="http://localhost/construcao_oficial/login/login.php">Login</a></li>
             <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroP/cadastroP.php">Cadastro de
                     Prod.</a></li>
-            <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroM/cadstroM.php">Cadastro
+            <li class="cadastroo"><a href="http://localhost/construcao_oficial/cadastroM/cadastroM.php">Cadastro
                     de Mov.</a></li>
             <li class="estoque"><a href="http://localhost/construcao_oficial/tabelas/tabelasProdutos.php">Estoque</a>
             </li>
@@ -59,6 +59,7 @@ if (!$conn) {
         {
             // ... (função mantida) ...
             $alertas = [];
+            // Nota: A coluna "quantidade" deve estar na tabela "produto" e ser o estoque atual
             $sql = "SELECT 
             idproduto,
             nome,
@@ -72,26 +73,30 @@ if (!$conn) {
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['registrar_movimentacao'])) {
-            // ... (Lógica de processamento mantida) ...
             $produto_id = $_POST['produto_id'];
             $tipo = $_POST['tipo'];
             $quantidade = $_POST['quantidade'];
             $data_movimentacao = str_replace('T', ' ', $_POST['data_movimentacao']) . ':00';
             $observacao = $_POST['observacao'];
 
-            $usuario = $_POST['usuario']; // Novo campo para o usuário
+            // Campo $usuario removido pois não é usado no INSERT na tabela movimentacao
         
             if ($tipo == 'saida') {
                 $sql_check = "SELECT quantidade FROM produto WHERE idproduto = $produto_id";
                 $result_check = mysqli_query($conn, $sql_check);
                 $row = mysqli_fetch_assoc($result_check);
-                if ($row['quantidade'] < $quantidade) {
+                
+                // Trata o caso de quantidade nula ou vazia
+                $quantidade_atual = $row['quantidade'] ?? 0;
+
+                if ($quantidade_atual < $quantidade) {
                     // CLASSE BOOTSTRAP: alert alert-danger (para erro)
-                    echo "<div class='alert alert-danger'>Erro: Quantidade insuficiente em estoque. Disponível: " . $row['quantidade'] . "</div>";
+                    echo "<div class='alert alert-danger'>Erro: Quantidade insuficiente em estoque. Disponível: " . $quantidade_atual . "</div>";
                 } else {
-                    // ... (Registro de movimentação e atualização de estoque) ...
-                    $sql_mov = "INSERT INTO movimentacao (produto_idproduto, tipo_entrada_saida, quantidade, data_movimentacao, observacao, usuario) VALUES ('$produto_id', '$tipo', '$quantidade', '$data_movimentacao', '$observacao', '$usuario')";
+                    // Registro de movimentação 
+                    $sql_mov = "INSERT INTO movimentacao (produto_idproduto, tipo_entrada_saida, quantidade, data_movimentacao, observacao) VALUES ('$produto_id', '$tipo', '$quantidade', '$data_movimentacao', '$observacao')";
                     if (mysqli_query($conn, $sql_mov)) {
+                        // Atualização de estoque (Saída: subtrai)
                         $sql_update = "UPDATE produto SET quantidade = quantidade - $quantidade WHERE idproduto = $produto_id";
                         if (mysqli_query($conn, $sql_update)) {
                             // CLASSE BOOTSTRAP: alert alert-success (para sucesso)
@@ -106,9 +111,10 @@ if (!$conn) {
             } else {
                 // Entrada
                 $sql_mov = "INSERT INTO movimentacao
-                          (produto_idproduto, tipo_entrada_saida, quantidade, data_movimentacao, observacao, usuario)
-                          VALUES ('$produto_id', '$tipo', '$quantidade', '$data_movimentacao', '$observacao', '$usuario')";
+                          (produto_idproduto, tipo_entrada_saida, quantidade, data_movimentacao, observacao)
+                          VALUES ('$produto_id', '$tipo', '$quantidade', '$data_movimentacao', '$observacao')";
                 if (mysqli_query($conn, $sql_mov)) {
+                    // Atualização de estoque (Entrada: soma)
                     $sql_update = "UPDATE produto SET quantidade = quantidade + $quantidade WHERE idproduto = $produto_id";
                     if (mysqli_query($conn, $sql_update)) {
                         // CLASSE BOOTSTRAP: alert alert-success (para sucesso)
