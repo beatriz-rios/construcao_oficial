@@ -56,7 +56,6 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     display: block;
-    /* Garante que o input fique em sua própria linha */
     background-color: white;
     /* Cor de fundo branca dos inputs */
 }
@@ -67,7 +66,6 @@ body {
     padding: 15px;
     margin-top: 25px;
     background-color: #007bff;
-    /* Azul vibrante */
     color: white;
     border: none;
     border-radius: 10px;
@@ -79,7 +77,7 @@ body {
 
 #btn-login:hover {
     background-color: #A52A2A;
-    /* Um pouco mais escuro ao passar o mouse */
+  
 }
 
 
@@ -107,7 +105,6 @@ body {
     font-size: 20px;
     color: white;
     margin: auto;
-    /* centralizar o card sobre a imagem */
     margin-top: 15px;
 }
 
@@ -117,10 +114,7 @@ body {
     margin-top: 2px;
     margin-bottom: 20px;
     border: none;
-    /* Removi a borda para ficar mais limpo */
     border-radius: 10px;
-    /* **Arredonda mais as bordas dos inputs** */
-
     background-color: white;
     color: black;
     font-size: 18px;
@@ -129,7 +123,6 @@ body {
 }
 
 /* ESTILIZANDO OS INPUTS DE TEXTO E SENHA */
-/* Mudei o seletor para incluir 'password' e remover 'date' que não está no HTML */
 .loginn input[type="email"],
 .loginn input[type="password"] {
     width: 100%;
@@ -137,10 +130,7 @@ body {
     margin-top: 2px;
     margin-bottom: 20px;
     border: none;
-    /* Removi a borda para ficar mais limpo */
     border-radius: 10px;
-    /* **Arredonda mais as bordas dos inputs** */
-
     background-color: white;
     color: black;
     font-size: 18px;
@@ -169,8 +159,7 @@ body {
 }
 
 
-/*Estilizando as informações do USUARIO*/
-/* Seu código existente (se houver) */
+
 .loga {
     background-color: black;
 }

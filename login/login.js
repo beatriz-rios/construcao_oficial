@@ -1,6 +1,3 @@
-//  CONFIGURAÇÃO (Variáveis e 'Banco de Dados' Simulado)
-
-
 // Base de Dados Simples (Lista de Usuários Permitidos)
 const USUARIOS_PERMITIDOS = [
     { email: 'vitor@empresa.com', senha: '123456', nome: 'Vitor' }, 
@@ -13,7 +10,7 @@ const URL_LOGIN = 'login.php';
 const URL_SUCESSO = 'login.php';
 const TEMPO_REDIRECIONAMENTO_MS = 4000;
 
-// --- 1.3 Elementos HTML (Puxando todos os IDs relevantes) 
+// --- 1.3 Elementos HTML (Puxando todos os IDs) 
 // Elementos da tela de Login
 const FORMULARIO = document.getElementById('formulario-login');
 const MENSAGEM_ERRO = document.getElementById('mensagem-erro');
@@ -29,7 +26,7 @@ const DISPLAY_EMAIL = document.getElementById('display-email');
 const BTN_LOGOUT = document.getElementById('btn-logout');
 
 
-// FUNÇÃO DE FALHA (Lógica de Erro Corrigida)
+// FUNÇÃO DE FALHA 
 
 
 // Função que lida com a falha de autenticação (exibe mensagem e redireciona após tempo)
@@ -54,7 +51,7 @@ function lidarComFalha(motivoDaFalha) {
 }
 
 
-// TRATAMENTO DO LOGIN (Principal)
+// Vereficação LOGIN (Principal)
 
 
 // Apenas executa o tratamento de login se o formulário for encontrado.

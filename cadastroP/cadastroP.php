@@ -53,7 +53,16 @@
                 Categoria:<input type="text" name="categoria" id="ids" required><br>
                 Descrição:<input type="text" name="descricao" id="ids"><br>
                 Cor:<input type="text" name="cor" id="ids"><br>
-                Unidade de Medida:<input type="text" name="unidade_medida" id="ids"><br>
+               <div >
+                <label>Nível de Permissão</label>
+                <select name="medida" id="ids">
+                    <option value="" disabled selected>Selecione uma Opção</option>
+                    <option value="Quilogramas">Quilogramas</option>
+                    <option value="Tonelada">Tonelada</option>
+                    <option value="Litros">Litros</option>
+                    <option value="Gramas">Gramas</option>
+                </select>
+            </div>
                 Data de Criação:<input type="date" name="data_criacao" id="ids"><br>
                 Textura:<input type="text" name="textura" id="ids"><br>
                 Aplicação:<input type="text" name="aplicacao" id="ids"><br>
@@ -94,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $categoria = $_POST['categoria'];
     $descricao = $_POST['descricao'];
     $cor = $_POST['cor'];
-    $unidade_medida = $_POST['unidade_medida'];
+    $unidade_medida = $_POST['medida'];
     $data_criacao = $_POST['data_criacao'];
     $textura = $_POST['textura'];
     $aplicacao = $_POST['aplicacao'];

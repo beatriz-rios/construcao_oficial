@@ -1,12 +1,8 @@
-/**
- * LÓGICA DE SEGURANÇA E FUNCIONALIDADES DA PÁGINA DE ESTOQUE (tabelasProdutos.php)
- */
 
-// --- 1. FUNÇÃO DE VERIFICAÇÃO DE LOGIN (CLIENT-SIDE) ---
+//  FUNÇÃO DE VERIFICAÇÃO DE LOGIN
 /**
- * Verifica se o usuário tem os dados de login no localStorage.
- * Se o token estiver faltando ou for inválido, redireciona o usuário para o login.
- * (Esta é uma segurança secundária e rápida, a segurança primária está no PHP).
+  Verifica se o usuário tem os dados de login no localStorage.
+  Se o token estiver faltando ou for inválido, redireciona o usuário para o login.
  */
 function verificarLogin() {
     const usuarioLogadoJson = localStorage.getItem('usuarioLogado');
@@ -28,9 +24,9 @@ function verificarLogin() {
             return false;
         }
 
-    } catch (e) {
+    } catch (erro) {
         // JSON inválido
-        console.error("Erro no parse do objeto 'usuarioLogado':", e);
+        console.error("Erro no parse do objeto 'usuarioLogado':", erro);
         localStorage.removeItem('usuarioLogado');
         window.location.href = loginPageUrl; 
         return false;
@@ -69,7 +65,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             try {
                 // Converte a string JSON de volta para um objeto
                 usuarioLogado = JSON.parse(usuarioJson);
-            } catch (e) {
+            } catch (erro) {
                 console.error("Erro ao fazer parse do usuário no localStorage", e);
             }
         }
