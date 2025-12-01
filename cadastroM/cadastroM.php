@@ -39,7 +39,6 @@ if (!$conn) {
                 <a href="#" id="btn-logout">Sair (Logout)</a>
             </li>
             <li class="login"><img src="../imagens/people.png" id="icone-usuario"></li>
-
             <li><img src="../imagens/logo.png" alt="logo" class="logo"></li>
         </ul>
     </div>
@@ -54,17 +53,17 @@ if (!$conn) {
     <div class="container mt-4">
 
         <?php
-        // Bloco de processamento PHP e alertas (Mantido, mas com classes Bootstrap para alertas)
         function verificarAlertas($conn)
         {
-            // ... (função mantida) ...
             $alertas = [];
-            // Nota: A coluna "quantidade" deve estar na tabela "produto" e ser o estoque atual
+            // Usa COALESCE(quantidade, 0) para garantir a verificação correta se o estoque for NULL
             $sql = "SELECT 
-            idproduto,
-            nome,
-            quantidade,
-            estoque_minimo FROM produto WHERE quantidade < estoque_minimo";
+                        idproduto,
+                        nome,
+                        COALESCE(quantidade, 0) AS quantidade, 
+                        estoque_minimo 
+                    FROM produto 
+                    WHERE COALESCE(quantidade, 0) < estoque_minimo";
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_assoc($result)) {
                 $alertas[] = $row;
@@ -73,33 +72,29 @@ if (!$conn) {
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['registrar_movimentacao'])) {
-            $produto_id = $_POST['produto_id'];
-            $tipo = $_POST['tipo'];
-            $quantidade = $_POST['quantidade'];
-            $data_movimentacao = str_replace('T', ' ', $_POST['data_movimentacao']) . ':00';
-            $observacao = $_POST['observacao'];
+            $produto_id = mysqli_real_escape_string($conn, $_POST['produto_id']);
+            $tipo = mysqli_real_escape_string($conn, $_POST['tipo']);
+            $quantidade = (int)$_POST['quantidade']; // Quantidade deve ser um número
+            $data_movimentacao = mysqli_real_escape_string($conn, str_replace('T', ' ', $_POST['data_movimentacao']) . ':00');
+            $observacao = mysqli_real_escape_string($conn, $_POST['observacao']);
 
-            // Campo $usuario removido pois não é usado no INSERT na tabela movimentacao
-        
             if ($tipo == 'saida') {
-                $sql_check = "SELECT quantidade FROM produto WHERE idproduto = $produto_id";
+                // CORREÇÃO: Usa COALESCE(quantidade, 0) para ler o estoque atual
+                $sql_check = "SELECT COALESCE(quantidade, 0) as quantidade FROM produto WHERE idproduto = '$produto_id'";
                 $result_check = mysqli_query($conn, $sql_check);
                 $row = mysqli_fetch_assoc($result_check);
                 
-                // Trata o caso de quantidade nula ou vazia
-                $quantidade_atual = $row['quantidade'] ?? 0;
+                $quantidade_atual = $row['quantidade'] ?? 0; // Se o produto não existir, será 0
 
                 if ($quantidade_atual < $quantidade) {
-                    // CLASSE BOOTSTRAP: alert alert-danger (para erro)
                     echo "<div class='alert alert-danger'>Erro: Quantidade insuficiente em estoque. Disponível: " . $quantidade_atual . "</div>";
                 } else {
-                    // Registro de movimentação 
+                    // REGISTRO DE SAÍDA
                     $sql_mov = "INSERT INTO movimentacao (produto_idproduto, tipo_entrada_saida, quantidade, data_movimentacao, observacao) VALUES ('$produto_id', '$tipo', '$quantidade', '$data_movimentacao', '$observacao')";
                     if (mysqli_query($conn, $sql_mov)) {
-                        // Atualização de estoque (Saída: subtrai)
-                        $sql_update = "UPDATE produto SET quantidade = quantidade - $quantidade WHERE idproduto = $produto_id";
+                        // CORREÇÃO: Usa COALESCE(quantidade, 0) para subtrair, tratando NULL como 0
+                        $sql_update = "UPDATE produto SET quantidade = COALESCE(quantidade, 0) - $quantidade WHERE idproduto = '$produto_id'";
                         if (mysqli_query($conn, $sql_update)) {
-                            // CLASSE BOOTSTRAP: alert alert-success (para sucesso)
                             echo "<div class='alert alert-success'>Movimentação registrada e estoque atualizado com sucesso!</div>";
                         } else {
                             echo "<div class='alert alert-danger'>Movimentação registrada, mas erro ao atualizar estoque: " . mysqli_error($conn) . "</div>";
@@ -109,15 +104,14 @@ if (!$conn) {
                     }
                 }
             } else {
-                // Entrada
+                // REGISTRO DE ENTRADA
                 $sql_mov = "INSERT INTO movimentacao
                           (produto_idproduto, tipo_entrada_saida, quantidade, data_movimentacao, observacao)
                           VALUES ('$produto_id', '$tipo', '$quantidade', '$data_movimentacao', '$observacao')";
                 if (mysqli_query($conn, $sql_mov)) {
-                    // Atualização de estoque (Entrada: soma)
-                    $sql_update = "UPDATE produto SET quantidade = quantidade + $quantidade WHERE idproduto = $produto_id";
+                    // CORREÇÃO: Usa COALESCE(quantidade, 0) para somar, tratando NULL como 0
+                    $sql_update = "UPDATE produto SET quantidade = COALESCE(quantidade, 0) + $quantidade WHERE idproduto = '$produto_id'";
                     if (mysqli_query($conn, $sql_update)) {
-                        // CLASSE BOOTSTRAP: alert alert-success (para sucesso)
                         echo "<div class='alert alert-success'>Movimentação registrada e estoque atualizado com sucesso!</div>";
                     } else {
                         echo "<div class='alert alert-danger'>Movimentação registrada, mas erro ao atualizar estoque: " . mysqli_error($conn) . "</div>";
@@ -128,85 +122,75 @@ if (!$conn) {
             }
         }
 
-        // Exibir alertas de estoque
         $alertas = verificarAlertas($conn);
         if (!empty($alertas)) {
-            echo "<h2 class='mt-4 text-center custom-title'>Alertas de Estoque Baixo</h2>";
+            echo "<div class='alert custom-alert-warning mt-4'><strong>ALERTA DE ESTOQUE BAIXO:</strong></div>";
+            echo "<ul class='list-group mb-4'>";
             foreach ($alertas as $alerta) {
-                // CLASSE BOOTSTRAP: alert alert-warning (customizada para a cor cinza-azulada)
-                echo "<div class='alert alert-warning custom-alert-warning'>Produto: " . $alerta['nome'] . " - Quantidade atual: " . $alerta['quantidade'] . " - Mínimo: " . $alerta['estoque_minimo'] . "</div>";
+                echo "<li class='list-group-item custom-alert-warning'>Produto **" . htmlspecialchars($alerta['nome']) . "** está com estoque de **" . htmlspecialchars($alerta['quantidade']) . "**, abaixo do mínimo de **" . htmlspecialchars($alerta['estoque_minimo']) . "**</li>";
             }
+            echo "</ul>";
         }
         ?>
 
+        <h2 class="text-center custom-title mb-4">Registro de Movimentação</h2>
         <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10">
-                <div class="card custom-card">
-                    <div class="card-body">
-                        <h2 class="card-title text-center custom-title">Registrar Movimentação</h2>
-                        <form method="post">
-                            <div class="mb-3">
-                                <label for="produto_id" class="form-label">Produto:</label>
-                                <select class="form-select custom-input" name="produto_id" id="produto_id" required>
-                                    <option value="">Selecione um produto</option>
-                                    <?php
-                                    $sql_produtos = "SELECT idproduto, nome FROM produto ORDER BY nome";
-                                    $result_produtos = mysqli_query($conn, $sql_produtos);
-                                    while ($produto = mysqli_fetch_assoc($result_produtos)) {
-                                        echo "<option value='" . $produto['idproduto'] . "'>" . $produto['nome'] . "</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="tipo" class="form-label">Tipo de Movimentação:</label>
-                                <select class="form-select custom-input" name="tipo" id="tipo" required>
-                                    <option value="entrada">Entrada</option>
-                                    <option value="saida">Saída</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="quantidade" class="form-label">Quantidade:</label>
-                                <input type="number" step="0.01" class="form-control custom-input" name="quantidade"
-                                    id="quantidade" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="data_movimentacao" class="form-label">Data da Movimentação:</label>
-                                <input type="datetime-local" class="form-control custom-input" name="data_movimentacao"
-                                    id="data_movimentacao" value="<?php echo date('Y-m-d\TH:i'); ?>" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="observacao" class="form-label">Observação:</label>
-                                <textarea class="form-control custom-input" name="observacao" id="observacao"
-                                    rows="3"></textarea>
-                            </div>
-
-                            <div class="text-center">
-                                <button type="submit" name="registrar_movimentacao" class="btn custom-btn">Registrar
-                                    Movimentação</button>
-                            </div>
-                        </form>
-                    </div>
+            <div class="col-md-6">
+                <div class="card p-4 custom-card">
+                    <form method="POST" action="">
+                        <div class="mb-3">
+                            <label for="produto_id" class="form-label">Produto:</label>
+                            <select class="form-select" id="produto_id" name="produto_id" required>
+                                <option value="">Selecione um Produto</option>
+                                <?php
+                                $sql_produtos = "SELECT idproduto, nome FROM produto ORDER BY nome";
+                                $result_produtos = mysqli_query($conn, $sql_produtos);
+                                while ($produto = mysqli_fetch_assoc($result_produtos)) {
+                                    echo "<option value='" . htmlspecialchars($produto['idproduto']) . "'>" . htmlspecialchars($produto['nome']) . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipo" class="form-label">Tipo de Movimentação:</label>
+                            <select class="form-select" id="tipo" name="tipo" required>
+                                <option value="">Selecione o Tipo</option>
+                                <option value="entrada">Entrada</option>
+                                <option value="saida">Saída</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="quantidade" class="form-label">Quantidade:</label>
+                            <input type="number" class="form-control" id="quantidade" name="quantidade" min="1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="data_movimentacao" class="form-label">Data da Movimentação:</label>
+                            <input type="datetime-local" class="form-control" id="data_movimentacao"
+                                name="data_movimentacao" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="observacao" class="form-label">Observação:</label>
+                            <textarea class="form-control" id="observacao" name="observacao" rows="3"></textarea>
+                        </div>
+                        <button type="submit" name="registrar_movimentacao" class="btn custom-btn w-100">Registrar
+                            Movimentação</button>
+                    </form>
                 </div>
             </div>
         </div>
 
-        <h2 class="mt-4 mb-3 text-center custom-title">Histórico de Movimentações</h2>
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="table-responsive custom-table-container">
-                    <table class="table table-striped table-bordered">
-                        <thead style="background-color: #6C7A89; color: white;">
+        <div class="row mt-5 justify-content-center">
+            <div class="col-md-10">
+                <h2 class="text-center custom-title mb-4">Histórico de Movimentações</h2>
+                <div class="custom-table-container table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>ID Mov.</th>
                                 <th>Produto</th>
                                 <th>Tipo</th>
                                 <th>Quantidade</th>
-                                <th>Data</th>
+                                <th>Data/Hora</th>
                                 <th>Observação</th>
                             </tr>
                         </thead>
@@ -227,11 +211,11 @@ if (!$conn) {
                             while ($mov = mysqli_fetch_assoc($result_historico)) {
                                 echo "<tr>";
                                 echo "<td>" . $mov['idmovimentacao'] . "</td>";
-                                echo "<td>" . $mov['nome'] . "</td>";
-                                echo "<td>" . $mov['tipo_entrada_saida'] . "</td>";
-                                echo "<td>" . $mov['quantidade'] . "</td>";
-                                echo "<td>" . $mov['data_movimentacao'] . "</td>";
-                                echo "<td>" . $mov['observacao'] . "</td>";
+                                echo "<td>" . htmlspecialchars($mov['nome']) . "</td>";
+                                echo "<td>" . htmlspecialchars($mov['tipo_entrada_saida']) . "</td>";
+                                echo "<td>" . htmlspecialchars($mov['quantidade']) . "</td>";
+                                echo "<td>" . htmlspecialchars($mov['data_movimentacao']) . "</td>";
+                                echo "<td>" . htmlspecialchars($mov['observacao']) . "</td>";
                                 echo "</tr>";
                             }
                             ?>

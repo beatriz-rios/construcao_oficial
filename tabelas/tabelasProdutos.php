@@ -9,6 +9,7 @@ if (!$conn) {
     die("Falha na conexão: " . mysqli_connect_error());
 }
 
+// CORREÇÃO: Usa COALESCE(p.quantidade, 0) para exibir 0 se o estoque for NULL
 $sql = "
     SELECT
         p.idproduto,
@@ -22,7 +23,7 @@ $sql = "
         p.textura,
         p.aplicacao,
         p.estoque_minimo,
-        p.quantidade AS quantidade_atual
+        COALESCE(p.quantidade, 0) AS quantidade_atual 
     FROM produto p
     ORDER BY p.nome
 ";
@@ -61,7 +62,6 @@ $result = mysqli_query($conn, $sql);
             <li class="login"><img src="../imagens/people.png" id="icone-usuario"></li>
 
             <li><img src="../imagens/logo.png" alt="logo" class="logo"></li>
-
             <div id="info-usuario"
                 style="display:none; position: absolute; right: 20px; top: 90px; background-color: #fcd378; border: 1px solid #ccc; padding: 15px; z-index: 100; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                 <h4 style="margin-top: 0;">Usuário Logado</h4>
@@ -102,6 +102,7 @@ $result = mysqli_query($conn, $sql);
                     echo "<td>" . htmlspecialchars($row["data_criacao"]) . "</td>";
                     echo "<td>" . htmlspecialchars($row["textura"]) . "</td>";
                     echo "<td>" . htmlspecialchars($row["estoque_minimo"]) . "</td>";
+                    // Exibição do estoque atual, que agora garante não ser NULL
                     echo "<td>" . htmlspecialchars($row["quantidade_atual"]) . "</td>";
                     echo "</tr>";
                 }
