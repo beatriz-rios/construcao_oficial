@@ -62,12 +62,16 @@ ul {
 /* Estilo dos Itens da Lista */
 li {
     margin-left: 20px;
+   
 }
+
 
 /* Estilo do Link (Botão Login) */
 li a {
     display: inline-block;
-    padding: 10px 22 px;
+    padding: 22px 30px;
+    width: 100px;
+    text-align: center;
     text-decoration: none;
     color: var(--cor-texto-principal);
     /* Texto claro */
@@ -75,11 +79,12 @@ li a {
     /* Fundo azul inicial */
     border: none;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 1000;
     cursor: pointer;
     /* Transição suave para o efeito dinâmico */
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+   
 }
 
 /* Estilo para o HOVER do Botão de Login (COM VERMELHO) */

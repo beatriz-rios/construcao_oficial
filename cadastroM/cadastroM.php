@@ -127,7 +127,7 @@ if (!$conn) {
             echo "<div class='alert custom-alert-warning mt-4'><strong>ALERTA DE ESTOQUE BAIXO:</strong></div>";
             echo "<ul class='list-group mb-4'>";
             foreach ($alertas as $alerta) {
-                echo "<li class='list-group-item custom-alert-warning'>Produto **" . htmlspecialchars($alerta['nome']) . "** está com estoque de **" . htmlspecialchars($alerta['quantidade']) . "**, abaixo do mínimo de **" . htmlspecialchars($alerta['estoque_minimo']) . "**</li>";
+                echo "<li class='list-group-item custom-alert-warning'>Produto **" . htmlspecialchars($alerta['nome']) . "Está com estoque de " . htmlspecialchars($alerta['quantidade']) . " , abaixo do mínimo de " . htmlspecialchars($alerta['estoque_minimo']) . "</li>";
             }
             echo "</ul>";
         }
