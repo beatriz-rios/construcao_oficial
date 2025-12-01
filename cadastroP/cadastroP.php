@@ -54,7 +54,7 @@
                 Descrição:<input type="text" name="descricao" id="ids"><br>
                 Cor:<input type="text" name="cor" id="ids"><br>
                <div >
-                <label>Nível de Permissão</label>
+                <label>Unidade de Medida</label>
                 <select name="medida" id="ids">
                     <option value="" disabled selected>Selecione uma Opção</option>
                     <option value="Quilogramas">Quilogramas</option>
@@ -62,12 +62,13 @@
                     <option value="Litros">Litros</option>
                     <option value="Gramas">Gramas</option>
                 </select>
-            </div>
+            
                 Data de Criação:<input type="date" name="data_criacao" id="ids"><br>
                 Textura:<input type="text" name="textura" id="ids"><br>
                 Aplicação:<input type="text" name="aplicacao" id="ids"><br>
                 Estoque Mínimo:<input type="number" step="0.01" name="estoque_minimo" id="ids"><br>
                 <input type="submit" value="Enviar" id="env"><!--BOTAO ENVIAR-->
+                </div>
             </div>
         </form>
     </div>
