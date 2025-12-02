@@ -32,7 +32,7 @@ body {
     /* Empurra logo para esquerda, navbar para direita */
     align-items: center;
     background-color: var(--cor-fundo-header);
-    padding: 10px 30px;
+    padding: 9px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     border-bottom: 1px solid var(--cor-borda-clara);
 }
@@ -69,22 +69,18 @@ li {
 /* Estilo do Link (Botão Login) */
 li a {
     display: inline-block;
-    padding: 22px 30px;
-    width: 100px;
+    padding: 8px 11px;
+    width: auto; 
     text-align: center;
     text-decoration: none;
     color: var(--cor-texto-principal);
-    /* Texto claro */
     background-color: var(--cor-botao-fundo);
-    /* Fundo azul inicial */
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 16px; 
     font-weight: 1000;
     cursor: pointer;
-    /* Transição suave para o efeito dinâmico */
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-   
 }
 
 /* Estilo para o HOVER do Botão de Login (COM VERMELHO) */
