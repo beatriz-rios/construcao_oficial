@@ -38,6 +38,12 @@ function verificarLogin() {
 // Chama a função 
 verificarLogin();
 
+
+
+
+
+
+
 //ESTILIZACAO DO PERFIL DO USUARIO (Revisado para buscar do localStorage)
 document.addEventListener('DOMContentLoaded', (event) => {
     // 1. Elementos do DOM

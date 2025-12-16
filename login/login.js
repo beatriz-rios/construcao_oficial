@@ -54,6 +54,10 @@ function lidarComFalha(motivoDaFalha) {
 }
 
 
+
+
+
+
 // Vereficação de LOGIN (Principal)
 // Apenas executa o tratamento de login se o formulário for encontrado.
 if (formulario) {
@@ -69,6 +73,10 @@ if (formulario) {
             return;
         }
         
+
+
+
+
         // Obtém os valores digitados.
         const emailDigitado = emailInput.value;
         const senhaDigitada = senhaInput.value;
@@ -106,6 +114,12 @@ if (formulario) {
 }
 
 
+
+
+
+
+
+
 //  EXIBIÇÃO E ESTILIZAÇÃO DO PERFIL
 
 // Garante que o código só será executado depois que todo o HTML da página estiver carregado
@@ -132,7 +146,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
             }
         }
         
-       
         let nome; 
         let email; 
 
@@ -163,6 +176,15 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
     // Adiciona o evento de clique ao ícone do usuário.
     iconeUsuario.addEventListener('click', atualizarEExibirInfo);
+    
+
+
+
+
+
+
+
+
     
     // LÓGICA DE LOGOUT 
     if (btnLogout) {
