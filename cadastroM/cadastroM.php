@@ -92,7 +92,7 @@ if (!$conn) {
                     // REGISTRO DE SAÍDA
                     $sql_mov = "INSERT INTO movimentacao (produto_idproduto, tipo_entrada_saida, quantidade, data_movimentacao, observacao) VALUES ('$produto_id', '$tipo', '$quantidade', '$data_movimentacao', '$observacao')";
                     if (mysqli_query($conn, $sql_mov)) {
-                        // CORREÇÃO: Usa COALESCE(quantidade, 0) para subtrair, tratando NULL como 0
+                        //  Usa COALESCE(quantidade, 0) para subtrair, tratando NULL como 0
                         $sql_update = "UPDATE produto SET quantidade = COALESCE(quantidade, 0) - $quantidade WHERE idproduto = '$produto_id'";
                         if (mysqli_query($conn, $sql_update)) {
                             echo "<div class='alert alert-success'>Movimentação registrada e estoque atualizado com sucesso!</div>";
@@ -127,7 +127,7 @@ if (!$conn) {
             echo "<div class='alert custom-alert-warning mt-4'><strong>ALERTA DE ESTOQUE BAIXO:</strong></div>";
             echo "<ul class='list-group mb-4'>";
             foreach ($alertas as $alerta) {
-                echo "<li class='list-group-item custom-alert-warning'>Produto **" . htmlspecialchars($alerta['nome']) . "Está com estoque de " . htmlspecialchars($alerta['quantidade']) . " , abaixo do mínimo de " . htmlspecialchars($alerta['estoque_minimo']) . "</li>";
+                echo "<li class='list-group-item custom-alert-warning'>Produto " . htmlspecialchars($alerta['nome']) . " está com estoque de " . htmlspecialchars($alerta['quantidade']) . " , abaixo do mínimo de " . htmlspecialchars($alerta['estoque_minimo']) . "</li>";
             }
             echo "</ul>";
         }

@@ -112,11 +112,12 @@ $result = mysqli_query($conn, $sql);
             ?>
         </tbody>
     </table>
-    <script src="tabelaProduto.js" defer></script>
+    
 
     <?php
     mysqli_close($conn);
     ?>
+    <script src="tabelaProduto.js" defer></script>
 </body>
 
 </html>

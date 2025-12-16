@@ -3,7 +3,10 @@ body {
     /* Fundo cinza claro */
     font-family: Arial, sans-serif;
 }
-
+/* Coloca o ícone no lado direito da barra */
+#icone-usuario {
+    cursor: pointer;
+}
 
 /* ==================================== */
 /* FORMULÁRIO E CARTÃO (CARD) */

@@ -1,7 +1,6 @@
-/**
- * Verifica se o usuário está logado (checa o localStorage).
- * Se não estiver logado, redireciona para a página de login.
- */
+ //Verifica se o usuário está logado (checa o localStorage).
+ // Se não estiver logado, redireciona para a página de login.
+ 
 function verificarLogin() {
     const usuarioLogadoJson = localStorage.getItem('usuarioLogado');
     const loginPageUrl = '../login/login.php'; // Ajuste o caminho se necessário!
@@ -9,90 +8,93 @@ function verificarLogin() {
     // Se a chave 'usuarioLogado' não existir no localStorage, o usuário não está logado.
     if (!usuarioLogadoJson) {
         // Redireciona e encerra a execução do script.
-        window.location.href = loginPageUrl; 
+        window.location.href = loginPageUrl;
         return false;
     }
-    
+
     // Tenta fazer o parse do JSON para garantir que é um objeto válido.
     try {
         const usuarioLogado = JSON.parse(usuarioLogadoJson);
 
-        // Opcional: Uma checagem adicional para garantir que o objeto não é null e contém dados essenciais.
+        // Uma checagem para garantir que o objeto não é null e contém dados essenciais.
         if (!usuarioLogado || !usuarioLogado.nome || !usuarioLogado.email) {
             // Se os dados estiverem incompletos, remove a chave e redireciona.
             localStorage.removeItem('usuarioLogado');
-            window.location.href = loginPageUrl; 
+            window.location.href = loginPageUrl;
             return false;
         }
 
     } catch (e) {
         // Se houver um erro no parse (JSON inválido), redireciona.
         localStorage.removeItem('usuarioLogado');
-        window.location.href = loginPageUrl; 
+        window.location.href = loginPageUrl;
         return false;
     }
 
-    // Se chegou até aqui, o usuário está logado e o script continua a execução normal.
+    // Se chegar ate aqui o script continua normal
     return true;
 }
 
-// Chama a função imediatamente para proteger a página
+// Chama a função 
 verificarLogin();
 
-// ESTILIZACAO E LOGICA DO PERFIL DO USUARIO E TABELA DE PRODUTOS
+//ESTILIZACAO DO PERFIL DO USUARIO (Revisado para buscar do localStorage)
 document.addEventListener('DOMContentLoaded', (event) => {
-    // --- Lógica do Painel de Perfil (Copiei e organizei a lógica que estava no arquivo original) ---
+    // 1. Elementos do DOM
     const iconeUsuario = document.getElementById('icone-usuario');
     const infoPainel = document.getElementById('info-usuario');
     const displayNome = document.getElementById('display-nome');
     const displayEmail = document.getElementById('display-email');
 
-    // Verifica se os elementos cruciais existem (para evitar erros em páginas sem esses elementos)
-    if (iconeUsuario && infoPainel && displayNome && displayEmail) {
-        // Função para carregar os dados e alternar a exibição
-        function atualizarEExibirInfo() {
-            const usuarioJson = localStorage.getItem('usuarioLogado');
-            let usuarioLogado = null;
+    // Verifica se os elementos cruciais existem (só para a página cadastro.html)
+    if (!iconeUsuario || !infoPainel || !displayNome || !displayEmail) {
+        // console.warn("Elementos do painel de usuário não encontrados ou a página atual não é a de cadastro.");
+        return;
+    }
 
-            if (usuarioJson) {
-                try {
-                    usuarioLogado = JSON.parse(usuarioJson);
-                } catch (e) {
-                    console.error("Erro ao fazer parse do usuário no localStorage", e);
-                }
+    // 2. Função para carregar os dados e alternar a exibição
+    function atualizarEExibirInfo() {
+        // Tenta buscar o usuário logado no localStorage
+        const usuarioJson = localStorage.getItem('usuarioLogado');
+        let usuarioLogado = null;
+
+        if (usuarioJson) {
+            try {
+                // Converte a string JSON de volta para um objeto
+                usuarioLogado = JSON.parse(usuarioJson);
+            } catch (e) {
+                console.error("Erro ao fazer parse do usuário no localStorage", e);
             }
-
-            // Preenche a div de informações
-            let nome; // Primeiro, declare a variável
-        if (usuarioLogado) {
-            // Se a condição for VERDADEIRA
-            nome = usuarioLogado.nome;
-        } else {
-            // Se a condição for FALSA
-            nome = "Usuário Desconhecido (Faça Login)";
         }
-        // Agora, a variável 'nome' tem o valor correto.
 
+        // Define os valores para exibição
+         let nome; 
+        let email; 
 
-        let email; // Primeiro, declare a variável
+       
         if (usuarioLogado) {
-            // Se a condição for VERDADEIRA
+            // Se conseguimos carregar o usuário: Usamos os dados reais.
+            nome = usuarioLogado.nome;
             email = usuarioLogado.email;
         } else {
-            // Se a condição for FALSA
-            email = "Usuário Desconhecido (Faça Login)";
+            // Se NÃO conseguimos (falha no parse ou não logado)
+            nome = "Usuário Desconhecido (Faça Login)";
+            email = "N/A";
         }
-            // Alterna a visibilidade do painel
-            const isVisible = infoPainel.style.display === 'block';
-            infoPainel.style.display = isVisible ? 'none' : 'block';
-        }
+        // Preenche a div de informações
+        displayNome.textContent = nome;
+        displayEmail.textContent = email;
 
-        // Adiciona o evento de clique ao ícone
-        iconeUsuario.addEventListener('click', atualizarEExibirInfo);
+        // Alterna a visibilidade do painel 
+        const isVisible = infoPainel.style.display === 'block';
+
+        if (isVisible) {
+            infoPainel.style.display = 'none'; // esconde
+        } else {
+            infoPainel.style.display = 'block'; // mostra
+        }
     }
-    
-    // --- Lógica da Tabela de Produtos (Exemplo de onde sua lógica principal deve ir) ---
-    // Seu código de carregamento, filtragem e exibição da tabela de estoque deve vir aqui.
-    console.log("Página de Estoque Carregada. O usuário está logado e pode ver os produtos.");
-    // Exemplo: carregarProdutos();
+
+    //  Adiciona o evento de clique ao ícone
+    iconeUsuario.addEventListener('click', atualizarEExibirInfo);
 });

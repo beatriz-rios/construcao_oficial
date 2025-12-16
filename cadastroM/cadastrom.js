@@ -1,7 +1,6 @@
-/**
- * Verifica se o usuário está logado (checa o localStorage).
- * Se não estiver logado, redireciona para a página de login.
- */
+ //Verifica se o usuário está logado (checa o localStorage).
+ // Se não estiver logado, redireciona para a página de login.
+ 
 function verificarLogin() {
     const usuarioLogadoJson = localStorage.getItem('usuarioLogado');
     const loginPageUrl = '../login/login.php'; // Ajuste o caminho se necessário!
@@ -17,7 +16,7 @@ function verificarLogin() {
     try {
         const usuarioLogado = JSON.parse(usuarioLogadoJson);
 
-        // Opcional: Uma checagem adicional para garantir que o objeto não é null e contém dados essenciais.
+        // Uma checagem para garantir que o objeto não é null e contém dados essenciais.
         if (!usuarioLogado || !usuarioLogado.nome || !usuarioLogado.email) {
             // Se os dados estiverem incompletos, remove a chave e redireciona.
             localStorage.removeItem('usuarioLogado');
@@ -32,11 +31,11 @@ function verificarLogin() {
         return false;
     }
 
-    // Se chegou até aqui, o usuário está logado e o script continua a execução normal.
+    // Se chegar ate aqui o script continua normal
     return true;
 }
 
-// Chama a função imediatamente para proteger a página
+// Chama a função 
 verificarLogin();
 
 //ESTILIZACAO DO PERFIL DO USUARIO (Revisado para buscar do localStorage)
@@ -69,9 +68,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
 
         // Define os valores para exibição
-        // const nome = usuarioLogado ? usuarioLogado.nome : "Usuário Desconhecido (Faça Login)";
-        // const email = usuarioLogado ? usuarioLogado.email : "N/A";
-
          let nome; 
         let email; 
 
@@ -81,7 +77,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             nome = usuarioLogado.nome;
             email = usuarioLogado.email;
         } else {
-            // Se NÃO conseguimos (falha no parse ou não logado): Usamos as mensagens padrão.
+            // Se NÃO conseguimos (falha no parse ou não logado)
             nome = "Usuário Desconhecido (Faça Login)";
             email = "N/A";
         }
@@ -89,16 +85,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
         displayNome.textContent = nome;
         displayEmail.textContent = email;
 
-        // 3. Alterna a visibilidade do painel (como um "toggle")
+        // Alterna a visibilidade do painel 
         const isVisible = infoPainel.style.display === 'block';
 
         if (isVisible) {
-            infoPainel.style.display = 'none'; // Esconde
+            infoPainel.style.display = 'none'; // esconde
         } else {
-            infoPainel.style.display = 'block'; // Mostra
+            infoPainel.style.display = 'block'; // mostra
         }
     }
 
-    // 4. Adiciona o evento de clique ao ícone
+    //  Adiciona o evento de clique ao ícone
     iconeUsuario.addEventListener('click', atualizarEExibirInfo);
 });

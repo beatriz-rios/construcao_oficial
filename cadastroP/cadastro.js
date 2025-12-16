@@ -1,9 +1,9 @@
 
 //  FUNÇÃO DE VERIFICAÇÃO DE LOGIN
-/**
-  Verifica se o usuário tem os dados de login no localStorage.
-  Se o token estiver faltando ou for inválido, redireciona o usuário para o login.
- */
+
+ // Verifica se o usuário tem os dados de login no localStorage.
+ // Se o token estiver faltando ou for inválido, redireciona o usuário para o login.
+ 
 function verificarLogin() {
     const usuarioLogadoJson = localStorage.getItem('usuarioLogado');
     const loginPageUrl = '../login/login.php'; // Ajuste o caminho se necessário!

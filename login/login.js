@@ -1,100 +1,106 @@
 // Base de Dados Simples (Lista de Usuários Permitidos)
-const USUARIOS_PERMITIDOS = [
+const usuariosPermitidos = [
     { email: 'vitor@empresa.com', senha: '123456', nome: 'Vitor' }, 
     { email: 'bia@empresa.com', senha: '123456', nome: 'Bia' }, 
     { email: 'gideao@empresa.com', senha: '123456', nome: 'Gideao' } 
 ];
 
 //  URLs e Tempos 
-const URL_LOGIN = 'login.php'; 
-const URL_SUCESSO = 'login.php';
-const TEMPO_REDIRECIONAMENTO_MS = 4000;
+const urlLogin = 'login.php'; 
+const urlSucesso = 'login.php';
+const tempoRedirecionamentoMs = 4000;
 
-// --- 1.3 Elementos HTML (Puxando todos os IDs) 
+//  Elementos HTML (Puxando todos os IDs) 
 // Elementos da tela de Login
-const FORMULARIO = document.getElementById('formulario-login');
-const MENSAGEM_ERRO = document.getElementById('mensagem-erro');
-const EMAIL_INPUT = document.getElementById('email-input');
-const SENHA_INPUT = document.getElementById('senha-input');
-const NOME_INPUT = document.getElementById('nome-input');
+//UPPER_SNAKE_CASE (todas maiúsculas com underscores) representam constantes globais ou valores que nunca devem mudar | serve como um sinal visual forte
+const formulario = document.getElementById('formulario-login');
+const mensagemErro = document.getElementById('mensagem-erro');
+const emailInput = document.getElementById('email-input');
+const senhaInput = document.getElementById('senha-input');
+const nomeInput = document.getElementById('nome-input');
 
 // Elementos do painel de informações do usuário
-const ICONE_USUARIO = document.getElementById('icone-usuario');
-const INFO_PAINEL = document.getElementById('info-usuario');
-const DISPLAY_NOME = document.getElementById('display-nome');
-const DISPLAY_EMAIL = document.getElementById('display-email');
-const BTN_LOGOUT = document.getElementById('btn-logout');
+const iconeUsuario = document.getElementById('icone-usuario');
+const infoPainel = document.getElementById('info-usuario');
+const displayNome = document.getElementById('display-nome');
+const displayEmail = document.getElementById('display-email');
+const btnLogout = document.getElementById('btn-logout');
 
 
 // FUNÇÃO DE FALHA 
-
-
 // Função que lida com a falha de autenticação (exibe mensagem e redireciona após tempo)
 function lidarComFalha(motivoDaFalha) {
-    
-    const mensagemCompleta = `FALHA DE AUTENTICAÇÃO: ${motivoDaFalha} Redirecionando para a tela de login em ${TEMPO_REDIRECIONAMENTO_MS / 1000} segundos...`;
+    //mensagem completa que será exibida ao usuário, incluindo o tempo de espera.
+    const mensagemCompleta = `FALHA DE AUTENTICAÇÃO: ${motivoDaFalha} Redirecionando para a tela de login em ${tempoRedirecionamentoMs / 1000} segundos...`;
 
     
     alert(mensagemCompleta); 
     
-    if(MENSAGEM_ERRO) {
+     // Verificar se o elemento de mensagem de erro existe no HTML.
+    if(mensagemErro) {
        
-        MENSAGEM_ERRO.textContent = motivoDaFalha;
+        // Atualiza o texto do elemento HTML com o motivo específico da falha.
+        mensagemErro.textContent = motivoDaFalha;
         
-        MENSAGEM_ERRO.style.display = 'block'; 
+        
+        // Torna a div da mensagem de erro visível (se estava oculta).
+        mensagemErro.style.display = 'block'; 
     }
 
     //  Redirecionar novamente à tela de login após um pequeno atraso
     setTimeout(() => {
-        window.location.replace(URL_LOGIN); 
-    }, TEMPO_REDIRECIONAMENTO_MS);
+        window.location.replace(urlLogin); 
+    }, tempoRedirecionamentoMs);
 }
 
 
-// Vereficação LOGIN (Principal)
-
-
+// Vereficação de LOGIN (Principal)
 // Apenas executa o tratamento de login se o formulário for encontrado.
-if (FORMULARIO) {
-    FORMULARIO.addEventListener('submit', function(evento) { // Usando function()
+if (formulario) {
+    // Adiciona um 'ouvinte' (listener) que espera o evento de 'submit' (envio) do formulário.
+    formulario.addEventListener('submit', function(evento) { 
+        // Impede o comportamento padrão do navegador (que seria recarregar a página).
         evento.preventDefault(); 
         
         
-        if (!EMAIL_INPUT || !SENHA_INPUT) {
+          // Verifica se os campos de input foram corretamente localizados no HTML.
+        if (!emailInput || !senhaInput) {
             console.error("Campos de email/senha não encontrados no DOM. Verifique os IDs 'email-input' e 'senha-input'.");
             return;
         }
         
         // Obtém os valores digitados.
-        const emailDigitado = EMAIL_INPUT.value;
-        const senhaDigitada = SENHA_INPUT.value;
+        const emailDigitado = emailInput.value;
+        const senhaDigitada = senhaInput.value;
 
         // Procura na lista de usuários permitidos.
-        const usuarioEncontrado = USUARIOS_PERMITIDOS.find(usuario => 
+        const usuarioEncontrado = usuariosPermitidos.find(usuario => 
             usuario.email === emailDigitado && usuario.senha === senhaDigitada
         );
 
         if (usuarioEncontrado) {
-            // Caso de Sucesso:
-            
+            // Caso de Sucesso grava os dados do usuário no localStorage
+             // JSON.stringify() converte o objeto JavaScript em uma string, pois o localStorage só armazena strings.
             localStorage.setItem('usuarioLogado', JSON.stringify(usuarioEncontrado)); 
             
+
             alert(`Bem-vindo(a), ${usuarioEncontrado.nome}! Redirecionando...`);
             
             // Redireciona para a URL de sucesso.
-            window.location.replace(URL_SUCESSO); 
+            window.location.replace(urlSucesso); 
             
         } else {
             //Caso de Falha:
             const motivo = "Credenciais inválidas. Verifique seu e-mail e senha."; 
+            // Chama a função de lidar de falha.
             lidarComFalha(motivo);
         }
 
         //  RESETA OS CAMPOS APÓS TENTATIVA
-        EMAIL_INPUT.value = '';
-        SENHA_INPUT.value = '';
-        if (NOME_INPUT) {
-            NOME_INPUT.value = '';
+        emailInput.value = '';
+        senhaInput.value = '';
+        if (nomeInput) {
+            nomeInput.value = '';
         }
     });
 }
@@ -102,11 +108,11 @@ if (FORMULARIO) {
 
 //  EXIBIÇÃO E ESTILIZAÇÃO DO PERFIL
 
-
+// Garante que o código só será executado depois que todo o HTML da página estiver carregado
 document.addEventListener('DOMContentLoaded', function(event) { 
     
     // Verifica se os elementos cruciais do perfil existem
-    if (!ICONE_USUARIO || !INFO_PAINEL || !DISPLAY_NOME || !DISPLAY_EMAIL) {
+    if (!iconeUsuario || !infoPainel || !displayNome || !displayEmail) {
         return;
     }
 
@@ -142,30 +148,30 @@ document.addEventListener('DOMContentLoaded', function(event) {
         }
 
         // Preenche a div de informações
-        DISPLAY_NOME.textContent = nome;
-        DISPLAY_EMAIL.textContent = email;
+        displayNome.textContent = nome;
+        displayEmail.textContent = email;
 
         // Alterna a visibilidade do painel 
-        const isVisible = INFO_PAINEL.style.display === 'block';
+        const isVisible = infoPainel.style.display === 'block';
         
         if (isVisible) {
-            INFO_PAINEL.style.display = 'none'; // Esconde
+            infoPainel.style.display = 'none'; // esconde
         } else {
-            INFO_PAINEL.style.display = 'block'; // Mostra
+            infoPainel.style.display = 'block'; // mostra
         }
     }
 
     // Adiciona o evento de clique ao ícone do usuário.
-    ICONE_USUARIO.addEventListener('click', atualizarEExibirInfo);
+    iconeUsuario.addEventListener('click', atualizarEExibirInfo);
     
     // LÓGICA DE LOGOUT 
-    if (BTN_LOGOUT) {
-        BTN_LOGOUT.addEventListener('click', function() { 
+    if (btnLogout) {
+        btnLogout.addEventListener('click', function() { 
             // Remove os dados do usuário do armazenamento local
             localStorage.removeItem('usuarioLogado'); 
             alert('Você foi desconectado.');
             // Redireciona para a página de login
-            window.location.replace(URL_LOGIN); 
+            window.location.replace(urlLogin); 
         });
     }
 });

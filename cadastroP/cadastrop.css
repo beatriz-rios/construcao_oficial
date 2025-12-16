@@ -11,12 +11,8 @@ body {
 
 /* Coloca o ícone no lado direito da barra */
 #icone-usuario {
-    height: 30px;
-    width: auto;
+   
     cursor: pointer;
-    margin-left: auto;
-    /* Empurra o ícone e a lista para o canto direito */
-    margin-right: 15px;
 }
 
 /* ==================================== */
