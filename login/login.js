@@ -77,6 +77,8 @@ if (formulario) {
 
 
 
+
+
         // Obtém os valores digitados.
         const emailDigitado = emailInput.value;
         const senhaDigitada = senhaInput.value;
@@ -121,7 +123,6 @@ if (formulario) {
 
 
 //  EXIBIÇÃO E ESTILIZAÇÃO DO PERFIL
-
 // Garante que o código só será executado depois que todo o HTML da página estiver carregado
 document.addEventListener('DOMContentLoaded', function(event) { 
     
@@ -185,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
-    
+
     // LÓGICA DE LOGOUT 
     if (btnLogout) {
         btnLogout.addEventListener('click', function() { 
